@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>Shifan's Blog</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        td img{
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fluid-container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <a class="navbar-brand" href="index.html">Dashboard</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+
+
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <img src="images/me.jpg" width="50px;" height="50px;" class="profile-icon">
+                  <a class="nav-link">xHacker404</a>
+                  <a class="nav-link btn btn-secondary" href="index.html" style="margin-left: 10px">Log Out</a>
+                </form>
+              </div>
+         </nav>
+
+        </div>
+
+
+    </div>
+
+
+        <div class="row" style="margin-top:100px ">
+            <div class="col-md-2" id="left-sidebar">
+
+                <div class="list-group">
+
+                    <a href="new_post.html" class="list-group-item">Add New Post</a>
+                    <a href="posts.html" class="list-group-item ">Posts</a>
+                    <a href="users.html" class="list-group-item active">Users</a>
+                    <a href="comments.html" class="list-group-item ">Comments</a>
+                    <a href="category.html" class="list-group-item ">Categories</a>
+                    <a href="tags.html" class="list-group-item ">Tags</a>
+                    <a href="profile.html" class="list-group-item ">Profile</a>
+
+
+                </div>
+
+            </div>
+            <div class="col-md-10" >
+
+
+                <div class="post" style="height:1200px; overflow: scroll">
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">User Avatar</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">UserName</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                           <td style="width: auto"><img src="images/me.jpg" alt="xHacker404" width="100px" height="100px;"></td>
+                          <td> <a href="profile.html">xHacker404</a> </td>
+                          <td>BinaryDigit</td>
+                          <td>Admin</td>
+                          <td>
+                              <select class="custom-select" style="width:200px">
+                                <option>
+                                  Make Moderator
+                                </option>
+
+                                  <option>
+                                    Make Author
+                                  </option>
+                                  <option>
+                                  Remove User
+                                  </option>
+                              </select>
+                              <button class="btn btn-dark">Apply</button>
+                          </td>
+                          <td></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">2</th>
+                           <td style="width: auto"><img src="images/saiful.jpg" alt="Saiful Islam" width="100px" height="100px;"></td>
+                          <td> <a href="profile.html">Saiful Islam</a> </td>
+                          <td>Saiful</td>
+                          <td>Moderator</td>
+                          <td>
+                              <select class="custom-select" style="width:200px;">
+                                <option>
+                                  Make Admin
+
+                                </option>
+                                 <option>
+                                  Make Author
+                                 </option>
+                                  <option>
+                                  Remove User
+                                  </option>
+                              </select>
+                              <button class="btn btn-dark">Apply</button>
+                          </td>
+                          <td></td>
+                        </tr>
+
+                        <tr>
+                          <th scope="row">3</th>
+                           <td style="width: auto"><img src="images/imam.jpg" alt="Saiful Islam" width="100px" height="100px;"></td>
+                          <td> <a href="profile.html">Imam Hussain</a> </td>
+                          <td>imam</td>
+                          <td>Author</td>
+                          <td>
+                              <select class="custom-select" style="width:200px;">
+                                <option>
+                                  Make Admin
+
+                                </option>
+                                 <option>
+                                  Make Moderator
+                                 </option>
+                                  <option>
+                                  Remove User
+                                  </option>
+                              </select>
+                              <button class="btn btn-dark">Apply</button>
+                          </td>
+                          <td></td>
+                        </tr>
+
+
+
+                      </tbody>
+                    </table>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+    <div class="row">
+            <div class="col-md-12">
+
+                <footer>
+                    Copyright &copy; 2018 <a href="http://xHacker404.com">xHacker404 Shifan</a>
+                </footer>
+
+            </div>
+
+    </div>
+    </div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#featured_image').attr('src', e.target.result).width(150).height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+</body>
+</html>

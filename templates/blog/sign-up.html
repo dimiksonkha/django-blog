@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>Shifan's Blog</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .centered{
+            margin: auto;
+            margin-top:100px;
+
+
+        }
+
+        h2{
+
+        font-family: "jaf-facitweb","Helvetica Neue",'Arial',sans-serif;
+        }
+    </style>
+</head>
+<body>
+        <div class="row">
+
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <a class="navbar-brand" href="index.html">Shfan's Blog</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">Contact</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <a class="nav-link btn btn-outline-primary" href="login.html" >Login</a>
+                  <a class="nav-link btn btn-outline-success" href="sign-up.html" style="margin-left: 10px">Sign Up</a>
+                </form>
+              </div>
+         </nav>
+
+        </div>
+
+
+    </div>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-4 centered">
+            <form action="process.html" method="post" name="signup" id="signup">
+                <h2>Create an  Account</h2>
+              <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" class="form-control required" id="name"  title="Please Type Your Name" placeholder="e.g., xHacker404">
+
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="*********">
+
+                </div><div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="*********">
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Creat a New Account">
+            </form>
+
+
+
+        </div>
+
+
+        </div>
+
+
+    </div>
+
+   <div class="row">
+            <div class="col-md-12">
+            <footer>
+                Copyright &copy; 2018 <a href="http://xHacker404.com">xHacker404 Shifan</a>
+            </footer>
+
+
+            </div>
+
+    </div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+    $("#signup").validate({
+        rules:{
+            email:{
+                required:true,
+                email:true
+
+            },
+
+            password:{
+                required:true,
+                rangelength:[8,16]
+            },
+
+            confirmPassword:{
+                required:true,
+                equalTo:'#password'
+
+            }
+
+
+
+        },
+
+        messages:{
+            email:{
+                required:"Please Enter your email address",
+                email:"Sorry, Your email address is not valid!"
+
+            },
+
+            password:{
+                required:"Must put your password here",
+                rangelength:"Give password in range 8 to 16 characters"
+
+            },
+
+            confirmPassword:{
+                required:"Retype your password here",
+                equalTo:"Password doesn't match"
+            }
+
+
+
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>
