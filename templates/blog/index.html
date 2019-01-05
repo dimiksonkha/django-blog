@@ -4,21 +4,20 @@
 <head>
 	<meta charset="utf-8">
 	<title>xCode's Blog</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="{% static "css/bootstrap.min.css" %}"rel="stylesheet" type="text/css">
+    <link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
     <style type="text/css">
 
     </style>
 </head>
 <body>
-
-    <div class="row">
+		<div class="row">
 
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="index.html">Shfan's Blog</a>
+              <a class="navbar-brand" href="index.html">xCode's Blog</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -232,9 +231,9 @@
 
     </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/script.js"></script>
+<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/jquery-ui.js" %}"></script>
+<script src="{% static "js/script.js"%}"></script>
 </body>
 </html>
