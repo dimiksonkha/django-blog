@@ -97,17 +97,16 @@
                </form>
                  <div class="widget">
                     <h2>Recent Posts</h2>
-                    <ul>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
+										{% if posts %}
+											{% for post in posts %}
+										<ul>
+                        <li> <a href="#">{{post.title}}</a> </li>
 
                     </ul>
+											{% endfor %}
+										{% else %}
+										<p>No Recent Post!</p>
+										{% endif %}
                 </div>
 
                 <div class="widget">
