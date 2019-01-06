@@ -1,244 +1,45 @@
 <!DOCTYPE html>
-<html lang="us">
-<head>
-	<meta charset="utf-8">
-	<title>Shifan's Blog</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
+{% extends 'blog/base.html'%}
+{% block post_block %}
+<div class="col-md-7">
+	{% if posts %}
+			{% for post in posts %}
+		<div class="post">
+        <h2><a href="single.html"> {{ post.title}} </a></h2>
+        <ul>
+            <li>By  <a href="archeive.html">{{ post.author}}</a></li>
+            <li><a href="archeive.html"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
 
-    </style>
-</head>
-<body>
-      <div class="row">
+        </ul>
+        <hr>
+        <p>{{post.content}}</p>
 
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="index.html">Shfan's Blog</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">Contact</a>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <a class="nav-link btn btn-outline-primary" href="login.html" >Login</a>
-                  <a class="nav-link btn btn-outline-success" href="sign-up.html" style="margin-left: 10px">Sign Up</a>
-                </form>
-              </div>
-         </nav>
-
-        </div>
-
+        <button class="btn"><a href="single.html">Read More</a></button>
 
     </div>
-        <div class="container">
+		{% endfor %}
+
+		<nav aria-label="Page navigation example" style="margin-top:22px">
+					<ul class="pagination" style="position: relative; align-self: center">
+
+						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
+						<li class="page-item"><a class="page-link" href="#">5</a></li>
+						<li class="page-item"><a class="page-link" href="#">6</a></li>
+						<li class="page-item"><a class="page-link" href="#">7</a></li>
+						<li class="page-item"><a class="page-link" href="#">8</a></li>
+						<li class="page-item"><a class="page-link" href="#">9</a></li>
+						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+					</ul>
+		</nav>
+
+		{% else %}
+		<p>Sorry!! No post has been found!!!</p>
+		{% endif %}
 
 
-        <div class="row" style="margin-top:100px ">
-            <div class="col-md-1" id="left-sidebar"></div>
-            <div class="col-md-7">
-                <div class="archeive-title">
-                    <p><b>category:</b>Java</p>
-
-                </div>
-                <div class="post">
-                    <h2><a href="single.html">How to insert Data using MySQL?</a></h2>
-                    <ul>
-                        <li>By  <a href="#">Binary Digit</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 11 Jan, 2018</a></li>
-
-                    </ul>
-                    <hr>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed ex....
-                    </p>
-
-                    <button class="btn"><a href="single.html">Read More</a></button>
-
-                </div>  <div class="post">
-                    <h2><a href="single.html">Best Apps for Learing English</a></h2>
-                    <ul>
-                        <li>By  <a href="#">Shifan</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 6 Jan, 2018</a></li>
-
-                    </ul>
-                    <hr>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed ex....
-                    </p>
-
-                    <button class="btn"><a href="#">Read More</a></button>
-
-                </div>  <div class="post">
-                    <h2><a href="#">SQL Fundamentals</a></h2>
-                    <ul>
-                        <li>By  <a href="#">xHacker404</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 12 Dec, 2017</a></li>
-
-                    </ul>
-                    <hr>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed ex....
-                    </p>
-
-                    <button class="btn"><a href="#">Read More</a></button>
-
-                </div>  <div class="post">
-                    <h2><a href="#">CLI Interfaces</a></h2>
-                    <ul>
-                        <li>By  <a href="#">Binary Digit</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 6 Dec, 2017</a></li>
-
-                    </ul>
-                    <hr>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed ex....
-                    </p>
-
-                    <button class="btn"><a href="#">Read More</a></button>
-
-                </div>
-
-                <div class="post">
-                    <h2><a href="#">How to be an Xpert Paython Developer?</a></h2>
-                    <ul>
-                        <li>By  <a href="#">Binary Digit</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 11 Jan, 2016</a></li>
-
-                    </ul>
-                    <hr>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed ex....
-                    </p>
-
-                    <button class="btn"><a href="#">Read More</a></button>
-
-                </div>
-
-
-            <nav aria-label="Page navigation example" style="margin-top:22px">
-                  <ul class="pagination" style="position: relative; align-self: center">
-
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                    <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    <li class="page-item"><a class="page-link" href="#">9</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
-            </nav>
-            </div>
-            <div class="col-md-4" id="right-sidebar">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-               </form>
-                 <div class="widget">
-                    <h2>Recent Posts</h2>
-                    <ul>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-
-                    </ul>
-                </div>
-
-                <div class="widget">
-                    <h2>Archeives</h2>
-                    <ul>
-                        <li> <a href="#">2010</a> </li>
-                        <li> <a href="#">2011</a> </li>
-                        <li> <a href="#">2012</a> </li>
-                        <li> <a href="#">2013</a> </li>
-                        <li> <a href="#">2014</a> </li>
-                        <li> <a href="#">2015</a> </li>
-                        <li> <a href="#">2016</a> </li>
-                        <li> <a href="#">2017</a> </li>
-                        <li> <a href="#">2018</a> </li>
-
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h2>Categories</h2>
-                    <ul>
-                        <li> <a href="#">C</a> </li>
-                        <li> <a href="#">PHP</a> </li>
-                        <li> <a href="#">Java</a> </li>
-                        <li> <a href="#">Python</a> </li>
-                        <li> <a href="#">Ruby</a> </li>
-                        <li> <a href="#">Perl</a> </li>
-                        <li> <a href="#">HTML</a> </li>
-
-                    </ul>
-                </div>
-
-                <div class="widget">
-                    <h2>Tags</h2>
-                    <ul>
-                        <li> <a href="#">C</a> </li>
-                        <li> <a href="#">PHP</a> </li>
-                        <li> <a href="#">Java</a> </li>
-                        <li> <a href="#">Python</a> </li>
-                        <li> <a href="#">Ruby</a> </li>
-                        <li> <a href="#">Perl</a> </li>
-                        <li> <a href="#">HTML</a> </li>
-
-                    </ul>
-
-                    <ul>
-                        <li> <a href="#">HTML</a> </li>
-                        <li> <a href="#">CSS</a> </li>
-                        <li> <a href="#">JavaScript</a> </li>
-                        <li> <a href="#">jQuery</a> </li>
-                        <li> <a href="#">Ajax</a> </li>
-                        <li> <a href="#">Angular JS</a> </li>
-                        <li> <a href="#">Node JS</a> </li>
-
-                    </ul>
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-
-    </div>
-    <div class="row">
-            <div class="col-md-12">
-
-                <footer>
-                    Copyright &copy; 2018 <a href="http://xHacker404.com">xHacker404 Shifan</a>
-                </footer>
-
-            </div>
-
-    </div>
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/script.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}

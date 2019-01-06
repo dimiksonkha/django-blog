@@ -9,6 +9,12 @@ def index(request):
     my_dict = {'posts':post_list}
     return render(request, 'blog/index.html', context=my_dict)
 
+def login(request):
+    return render(request,'blog/login.html')
+
+def registration(request):
+    return render(request,'blog/sign-up.html')
+
 def post_form_view(request):
     form = forms.PostForm()
 

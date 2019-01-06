@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="us">
 <head>
 	<meta charset="utf-8">
 	<title>Shifan's Blog</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
+	<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+	<link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+	<style type="text/css">
         .centered{
             margin: auto;
             margin-top:100px;

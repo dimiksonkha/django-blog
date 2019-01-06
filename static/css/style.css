@@ -2,7 +2,7 @@
 
 .navbar-brand{
 
-        
+
     }
 
 
@@ -10,15 +10,15 @@
 
 
 .widget{
-            
-    margin-top:22px; 
+
+    margin-top:22px;
 }
-        
-        
+
+
 .widget ul{
 
     padding: 10px;
-    display:inline-block; 
+    display:inline-block;
 }
 
 .widget ul li{
@@ -26,21 +26,21 @@
     list-style-type:none;
     display: block;
     color:blue;
-    font-size:14px; 
-    margin-left:0; 
+    font-size:14px;
+    margin-left:0;
 }
 
-       
+
 /******************* Post *******************************/
 
 
 .post:first-child{
 
-    margin-top:0px; 
+    margin-top:0px;
 }
 .post{
 
-    margin-top:40px; 
+    margin-top:40px;
 }
 .post a{
     text-decoration: none;
@@ -59,11 +59,11 @@
     padding: 0;
 
 
-}  
+}
 .post ul li{
     list-style: none;
     display: inline;
-    margin-left:10px; 
+    margin-left:10px;
 }
 
 
@@ -72,59 +72,58 @@
 /******************* Single Post Page **************************/
 .comment{
 
-        margin-top: 22px; 
-    }    
+        margin-top: 22px;
+    }
 
     .commenter img{
         border-radius: 50%;
-        background: black; 
+        background: black;
         width: 50px;
         height: 50px;
 
     }
 
     .comment-body{
-        margin-left:22px;  
+        margin-left:22px;
 
     }
 /**Archeive Type Title **/
 .archeive-title{
     font-family: sans-serif;
-    font-size:39px; 
+    font-size:39px;
     background:#e3e3e3;
-    text-transform:uppercase; 
-        
-    
+    text-transform:uppercase;
+
+
 }
 
 /***************** Error Message *********/
 label.error{
-    
-    color:#F00; 
+
+    color:#F00;
 }
 
 input.error{
-    
-    border:1px red solid;  
+
+    border:1px red solid;
 }
 
 /********************** Dashboard ***********/
 
 .profile-icon{
-    border-radius:50%; 
+    border-radius:50%;
 }
 
 /******************* Footer *************/
-        
+
 footer{
     background:#303030;
     color:white;
     text-align: center;
-    padding:100px; 
+    padding:100px;
     height:200px;
-    margin-top:44px;  
+    margin-top:44px;
 
 
 
-} 
-    
+}

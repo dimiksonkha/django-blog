@@ -1,268 +1,121 @@
 <!DOCTYPE html>
-<html lang="us">
-<head>
-	<meta charset="utf-8">
-	<title>Shifan's Blog</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/jssocials.css" />
-    <link rel="stylesheet" type="text/css" href="css/jssocials-theme-flat.css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-        <div class="row">
+{% extends 'blog/base.html' %}
+{% block post_block %}
+<div class="col-md-7">
+    <div class="post">
+        <h2><a href="#">How to insert Data using MySQL?</a></h2>
+        <ul>
+            <li>By  <a href="#">Binary Digit</a></li>
+            <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 11 Jan, 2018</a></li>
 
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="index.html">Shfan's Blog</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+        </ul>
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
+        </p>
 
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">Contact</a>
-                  </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <a class="nav-link btn btn-outline-primary" href="login.html" >Login</a>
-                  <a class="nav-link btn btn-outline-success" href="sign-up.html" style="margin-left: 10px">Sign Up</a>
-                </form>
-              </div>
-         </nav>
+       <ul class="pager">
+          <li style="margin-left:0"><a href="#">Previous Post</a></li>
+          <li style="float: right"><a href="#">Next Post</a></li>
+        </ul>
+        <p><b>Categories:</b><a href="#">Java</a> <a href="#">Python</a></p>
+        <p><b>Tags:</b>Tags:<a href="#">HTML</a> <a href="#">CSS</a><a href="#">JavaScript</a><a href="#">PHP</a><a href="#">Python</a></p>
+
+        <div id="share">Share This Post</div>
+
+        <div class="card">
+
+            <div class="card-header">
+                    Leave a Comment:
+            </div>
+            <div class="card-body">
+
+            <form>
+
+                <div class="form-group">
+
+                    <textarea class="form-control" id="comment-box" rows="3"></textarea>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary" >Submit</button>
+
+            </form>
+
+            </div>
+
+        </div>
+
+        <div class="row comment">
+
+
+        <div class="col-md-1 commenter"><img src="images/saiful.jpg" alt="50x50"></div>
+
+        <div class="col-md-10 comment-body">
+            <h2 style="font-size: 20px">Binary Digit</h2>
+            <p>
+                orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla.
+            </p>
+            <button type="button" class="btn">Reply</button>
 
         </div>
 
 
-    </div>
+        </div>
 
-    <div class="container">
+        <div class="row comment">
 
-        <div class="row" style="margin-top:100px ">
-            <div class="col-md-1" id="left-sidebar"></div>
-            <div class="col-md-7">
-                <div class="post">
-                    <h2><a href="#">How to insert Data using MySQL?</a></h2>
-                    <ul>
-                        <li>By  <a href="#">Binary Digit</a></li>
-                        <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 11 Jan, 2018</a></li>
+        <div class="col-md-1 commenter"><img src="images/me.jpg" alt="50x50" width="50px" height="50px"></div>
+        <div class="col-md-10 comment-body">
+            <h2 style="font-size: 20px">Suliaman Haque</h2>
+            <p>
+               volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed
+            </p>
+            <button type="button" class="btn">Reply</button>
 
-                    </ul>
-                    <hr>
+        </div>
+
+
+        </div>
+
+        <div class="row comment">
+
+        <div class="col-md-1 commenter"><img src="images/imam.jpg" alt="50x50" width="50px" height="50px"></div>
+        <div class="col-md-10 comment-body">
+            <h2 style="font-size: 20px">Imam Hussain</h2>
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
+            </p>
+            <button type="button" class="btn">Reply</button>
+            <div class="row reply" style="margin-top:22px">
+                <div class="col-md-1 commenter">
+                    <img src="images/me.jpg" alt="50x50" >
+                </div>
+
+                <div class="col-md-9 comment-body">
+                    <h2 style="font-size:20px">xHacker404</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
-
+                        In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed
                     </p>
 
-                   <ul class="pager">
-                      <li style="margin-left:0"><a href="#">Previous Post</a></li>
-                      <li style="float: right"><a href="#">Next Post</a></li>
-                    </ul>
-                    <p><b>Categories:</b><a href="#">Java</a> <a href="#">Python</a></p>
-                    <p><b>Tags:</b>Tags:<a href="#">HTML</a> <a href="#">CSS</a><a href="#">JavaScript</a><a href="#">PHP</a><a href="#">Python</a></p>
-
-                    <div id="share">Share This Post</div>
-
-                    <div class="card">
-
-                        <div class="card-header">
-                                Leave a Comment:
-                        </div>
-                        <div class="card-body">
-
-                        <form>
-
-                            <div class="form-group">
-
-                                <textarea class="form-control" id="comment-box" rows="3"></textarea>
-
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" >Submit</button>
-
-                        </form>
-
-                        </div>
-
-                    </div>
-
-                    <div class="row comment">
-
-
-                    <div class="col-md-1 commenter"><img src="images/saiful.jpg" alt="50x50"></div>
-
-                    <div class="col-md-10 comment-body">
-                        <h2 style="font-size: 20px">Binary Digit</h2>
-                        <p>
-                            orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla.
-                        </p>
-                        <button type="button" class="btn">Reply</button>
-
-                    </div>
-
-
-                    </div>
-
-                    <div class="row comment">
-
-                    <div class="col-md-1 commenter"><img src="images/me.jpg" alt="50x50" width="50px" height="50px"></div>
-                    <div class="col-md-10 comment-body">
-                        <h2 style="font-size: 20px">Suliaman Haque</h2>
-                        <p>
-                           volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed
-                        </p>
-                        <button type="button" class="btn">Reply</button>
-
-                    </div>
-
-
-                    </div>
-
-                    <div class="row comment">
-
-                    <div class="col-md-1 commenter"><img src="images/imam.jpg" alt="50x50" width="50px" height="50px"></div>
-                    <div class="col-md-10 comment-body">
-                        <h2 style="font-size: 20px">Imam Hussain</h2>
-                        <p>
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
-                        </p>
-                        <button type="button" class="btn">Reply</button>
-                        <div class="row reply" style="margin-top:22px">
-                            <div class="col-md-1 commenter">
-                                <img src="images/me.jpg" alt="50x50" >
-                            </div>
-
-                            <div class="col-md-9 comment-body">
-                                <h2 style="font-size:20px">xHacker404</h2>
-                                <p>
-                                    In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                    </div>
-
-
                 </div>
-
-
-
 
             </div>
-            <div class="col-md-4" id="right-sidebar">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-               </form>
-                 <div class="widget">
-                    <h2>Recent Posts</h2>
-                    <ul>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-                        <li> <a href="#">How to insert data using MySQL?</a> </li>
-                        <li> <a href="#">Best Apps for Learing English</a> </li>
-
-                    </ul>
-                </div>
-
-                <div class="widget">
-                    <h2>Archeives</h2>
-                    <ul>
-                        <li> <a href="#">2010</a> </li>
-                        <li> <a href="#">2011</a> </li>
-                        <li> <a href="#">2012</a> </li>
-                        <li> <a href="#">2013</a> </li>
-                        <li> <a href="#">2014</a> </li>
-                        <li> <a href="#">2015</a> </li>
-                        <li> <a href="#">2016</a> </li>
-                        <li> <a href="#">2017</a> </li>
-                        <li> <a href="#">2018</a> </li>
-
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h2>Categories</h2>
-                    <ul>
-                        <li> <a href="#">C</a> </li>
-                        <li> <a href="#">PHP</a> </li>
-                        <li> <a href="#">Java</a> </li>
-                        <li> <a href="#">Python</a> </li>
-                        <li> <a href="#">Ruby</a> </li>
-                        <li> <a href="#">Perl</a> </li>
-                        <li> <a href="#">HTML</a> </li>
-
-                    </ul>
-                </div>
-
-                <div class="widget">
-                    <h2>Tags</h2>
-                    <ul>
-                        <li> <a href="#">C</a> </li>
-                        <li> <a href="#">PHP</a> </li>
-                        <li> <a href="#">Java</a> </li>
-                        <li> <a href="#">Python</a> </li>
-                        <li> <a href="#">Ruby</a> </li>
-                        <li> <a href="#">Perl</a> </li>
-                        <li> <a href="#">HTML</a> </li>
-
-                    </ul>
-
-                    <ul>
-                        <li> <a href="#">HTML</a> </li>
-                        <li> <a href="#">CSS</a> </li>
-                        <li> <a href="#">JavaScript</a> </li>
-                        <li> <a href="#">jQuery</a> </li>
-                        <li> <a href="#">Ajax</a> </li>
-                        <li> <a href="#">Angular JS</a> </li>
-                        <li> <a href="#">Node JS</a> </li>
-
-                    </ul>
-                </div>
 
 
-            </div>
+        </div>
+
 
         </div>
 
 
     </div>
 
-    <div class="row">
-            <div class="col-md-12">
-            <footer>
-                Copyright &copy; 2018 <a href="http://xHacker404.com">xHacker404 Shifan</a>
-            </footer>
 
 
-            </div>
 
-    </div>
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jssocials.min.js"></script>
-<script src="js/script.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
