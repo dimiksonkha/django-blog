@@ -17,6 +17,7 @@ def post_form_view(request):
 
         if form.is_valid():
             print("Form Validation Successful!")
-            #print("Title:"+ form.cleaned_data['title'])
+            print("Title:"+ form.cleaned_data['title'])
             print("Content"+ form.cleaned_data['content'])
+
     return render(request, 'blog/new_post.html',{'form':form})
