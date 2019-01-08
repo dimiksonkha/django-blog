@@ -59,7 +59,20 @@
     <div class="container">
         <div class="row">
         <div class="col-md-4 centered">
-            <form action="process.html" method="post" name="signup" id="signup">
+            {% if registered %}
+							<h1>Thanks for your registration!</h1>
+						{% else %}
+						 <form enctype="multipart/form-data" method="POST">
+							{% csrf_token %}
+							{% user_form.as_p %}
+							{% profile_form.as_p %}
+							<input type="submit" class="btn btn-primary" value="Creat a New Account">
+
+						 </form>
+						{% endif%}
+
+						<!--
+						<form action="process.html" method="post" name="signup" id="signup">
                 <h2>Create an  Account</h2>
               <div class="form-group">
               <label for="name">Your Name</label>
@@ -83,8 +96,7 @@
               <input type="submit" class="btn btn-primary" value="Creat a New Account">
             </form>
 
-
-
+					  -->
         </div>
 
 
