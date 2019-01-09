@@ -3,6 +3,11 @@ from django.http import HttpResponse
 from blog.models import Post, Comment
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from . import forms
+
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -10,8 +15,31 @@ def index(request):
     my_dict = {'posts':post_list}
     return render(request, 'blog/index.html', context=my_dict)
 
-def login(request):
-    return render(request,'blog/login.html')
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+def user_login(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username='username', password='password')
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("User is not active")
+        else:
+            print('Someone tried to login and failed!')
+            print('User Name {} and Password {}'.format(username, password))
+            return HttpResponse("Invalid login detials provieded")
+    else:
+        return render(request,'blog/login.html', {})
 
 def registration(request):
     registered = False
@@ -46,6 +74,7 @@ def registration(request):
                     'profile_form':profile_form,
                     'registered':registered})
 
+@login_required
 def post_form_view(request):
     form = forms.PostForm()
 
