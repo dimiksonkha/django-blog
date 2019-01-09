@@ -62,14 +62,14 @@
             {% if registered %}
 							<h1>Thanks for your registration!</h1>
 						{% else %}
-						 <form enctype="multipart/form-data" method="POST">
-							{% csrf_token %}
-							{% user_form.as_p %}
-							{% profile_form.as_p %}
-							<input type="submit" class="btn btn-primary" value="Creat a New Account">
+						 	<form enctype="multipart/form-data" method="POST">
+								{% csrf_token %}
+								{{ user_form.as_p }}
+								{{ profile_form.as_p }}
+								<input type="submit" class="btn btn-primary" value="Register">
 
 						 </form>
-						{% endif%}
+						{% endif %}
 
 						<!--
 						<form action="process.html" method="post" name="signup" id="signup">
