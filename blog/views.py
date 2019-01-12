@@ -13,12 +13,24 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     post_list = Post.objects.order_by('published_date')
     years = []
+    tags = []
+    categories = []
+
     for post in post_list :
         year = post.published_date.year
+        tag = post.tag
+        category = post.category
+
         if year not in years:
             years.append(year)
 
-    my_dict = {'posts':post_list, 'years':years}
+        if tag not in tags:
+            tags.append(tag)
+
+        if category not in categories:
+            categories.append(category)
+
+    my_dict = {'posts':post_list, 'years':years, 'tags':tags, 'categories':categories}
     return render(request, 'blog/index.html', context=my_dict)
 
 
