@@ -16,6 +16,9 @@ class UserProfileInfo(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
+    tag = models.CharField(max_length=100,default='sql')
+    category = models.CharField(max_length=150, default='uncategoried')
+    featured_img = models.ImageField(upload_to='featured_images', blank=True)
     author = models.CharField(max_length=100, default="xHacker404")
     published_date = models.DateTimeField()
 

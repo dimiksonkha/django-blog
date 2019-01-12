@@ -78,16 +78,9 @@
                 <div class="widget">
                     <h2>Archeives</h2>
                     <ul>
-                        <li> <a href="#">2010</a> </li>
-                        <li> <a href="#">2011</a> </li>
-                        <li> <a href="#">2012</a> </li>
-                        <li> <a href="#">2013</a> </li>
-                        <li> <a href="#">2014</a> </li>
-                        <li> <a href="#">2015</a> </li>
-                        <li> <a href="#">2016</a> </li>
-                        <li> <a href="#">2017</a> </li>
-                        <li> <a href="#">2019</a> </li>
-
+											  {% for year in years %}
+												<li> <a href="blog/{{ year}}" />{{ year }}</a> </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="widget">

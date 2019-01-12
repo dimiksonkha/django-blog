@@ -12,8 +12,20 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     post_list = Post.objects.order_by('published_date')
-    my_dict = {'posts':post_list}
+    years = []
+    for post in post_list :
+        year = post.published_date.year
+        if year not in years:
+            years.append(year)
+
+    my_dict = {'posts':post_list, 'years':years}
     return render(request, 'blog/index.html', context=my_dict)
+
+
+def archeive_posts(request, year):
+    post_list = Post.objects.filter(published_date__year = year)
+    context = {'year':year,'posts':post_list}
+    return render(request, 'blog/archeive.html', context)
 
 @login_required
 def user_logout(request):
