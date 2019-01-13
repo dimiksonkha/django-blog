@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from blog.models import Post, Comment
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from . import forms
-
+from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -30,7 +30,11 @@ def index(request):
         if category not in categories:
             categories.append(category)
 
-    my_dict = {'posts':post_list, 'years':years, 'tags':tags, 'categories':categories}
+    paginator = Paginator(post_list, 2) # Show 2 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    my_dict = {'posts':posts, 'years':years, 'tags':tags, 'categories':categories}
     return render(request, 'blog/index.html', context=my_dict)
 
 
@@ -51,6 +55,16 @@ def archeive_posts_by_tag(request, tag):
 
 def archeive_posts_by_category(request, category):
     post_list = Post.objects.filter(category=category)
+    context = {'posts':post_list}
+    return render(request, 'blog/archeive.html', context)
+
+def archeive_posts_by_author(request, author):
+    post_list = Post.objects.filter(author=author)
+    context = {'posts':post_list}
+    return render(request, 'blog/archeive.html', context)
+
+def archeive_posts_by_date(request, year, month, day):
+    post_list = Post.objects.filter(published_date__year=year, published_date__month=month, published_date__day=day)
     context = {'posts':post_list}
     return render(request, 'blog/archeive.html', context)
 

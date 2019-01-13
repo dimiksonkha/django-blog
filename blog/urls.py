@@ -11,8 +11,10 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('sign-up/', views.registration, name='sign-up'),
     path('<int:year>/', views.archeive_posts, name='archeive_post'),
+    path('<int:year>/<int:month>/<int:day>', views.archeive_posts_by_date, name='archeive_date'),
     path('tag/<str:tag>/', views.archeive_posts_by_tag, name='archeive_tag'),
     path('category/<str:category>/', views.archeive_posts_by_category, name='archeive_category'),
+    path('author/<str:author>/', views.archeive_posts_by_author, name='archeive_author'),
     path('posts/<int:pk>/', views.post_details),
 
 ]

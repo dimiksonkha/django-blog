@@ -7,8 +7,8 @@
 		<div class="post">
         <h2><a href="blog/posts/{{post.id}}/"> {{ post.title}} </a></h2>
         <ul>
-            <li>By  <a href="blog/posts/{{post.author}}">{{ post.author}}</a></li>
-            <li><a href="blog/posts/{{post.published_date.date}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
+            <li>By  <a href="blog/author/{{post.author}}">{{ post.author}}</a></li>
+            <li><a href="blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
 
         </ul>
         <hr>
@@ -19,7 +19,7 @@
     </div>
 		{% endfor %}
 
-		<nav aria-label="Page navigation example" style="margin-top:22px">
+		<!-- <nav aria-label="Page navigation example" style="margin-top:22px">
 					<ul class="pagination" style="position: relative; align-self: center">
 
 						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -34,7 +34,25 @@
 						<li class="page-item"><a class="page-link" href="#">9</a></li>
 						<li class="page-item"><a class="page-link" href="#">Next</a></li>
 					</ul>
-		</nav>
+		</nav> -->
+
+		<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
 
 		{% else %}
 		<p>Sorry!! No post has been found!!!</p>
