@@ -44,6 +44,17 @@ def archeive_posts(request, year):
     context = {'year':year,'posts':post_list}
     return render(request, 'blog/archeive.html', context)
 
+def archeive_posts_by_tag(request, tag):
+    post_list = Post.objects.filter(tag=tag)
+    context = {'posts':post_list}
+    return render(request, 'blog/archeive.html', context)
+
+def archeive_posts_by_category(request, category):
+    post_list = Post.objects.filter(category=category)
+    context = {'posts':post_list}
+    return render(request, 'blog/archeive.html', context)
+
+
 @login_required
 def user_logout(request):
     logout(request)

@@ -11,6 +11,8 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('sign-up/', views.registration, name='sign-up'),
     path('<int:year>/', views.archeive_posts, name='archeive_post'),
-    path('posts/<int:pk>/', views.post_details)
+    path('tag/<str:tag>/', views.archeive_posts_by_tag, name='archeive_tag'),
+    path('category/<str:category>/', views.archeive_posts_by_category, name='archeive_category'),
+    path('posts/<int:pk>/', views.post_details),
 
 ]

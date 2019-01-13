@@ -87,7 +87,7 @@
                     <h2>Categories</h2>
                     <ul>
 											{% for category in categories %}
-											<li> <a href="blog/{{ category }}" />{{ category }}</a> </li>
+											<li> <a href="blog/category/{{ category }}" />{{ category }}</a> </li>
 											{% endfor %}
 
 
@@ -98,7 +98,7 @@
                     <h2>Tags</h2>
                     <ul>
 											{% for tag in tags %}
-											<li> <a href="blog/{{ tag }}" />{{ tag }}</a> </li>
+											<li> <a href="blog/tag/{{ tag }}" />{{ tag }}</a> </li>
 											{% endfor %}
 
 
