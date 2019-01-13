@@ -34,6 +34,11 @@ def index(request):
     return render(request, 'blog/index.html', context=my_dict)
 
 
+def post_details(request, pk):
+    post_list = Post.objects.get(id=pk)
+    my_dict = {'post':post_list}
+    return render(request, 'blog/single.html', context=my_dict)
+
 def archeive_posts(request, year):
     post_list = Post.objects.filter(published_date__year = year)
     context = {'year':year,'posts':post_list}

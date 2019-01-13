@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 {% extends 'blog/base.html' %}
+{% load staticfiles %}
 {% block post_block %}
 <div class="col-md-7">
     <div class="post">
-        <h2><a href="#">How to insert Data using MySQL?</a></h2>
+        {% if post  %}
+        <h2>{{post.title}}</h2>
         <ul>
-            <li>By  <a href="#">Binary Digit</a></li>
-            <li><a href="#"> <i class="fa fa-clock-o" aria-hidden="true"></i> 11 Jan, 2018</a></li>
+            <li>By <a href="blog/posts/{{post.author}}">{{post.author}}</a></li>
+            <li><a href="blog/posts/{{post.published_date.date}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date}}</a></li>
 
         </ul>
         <hr>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum,
-
+            {{post.content}}
         </p>
 
        <ul class="pager">
           <li style="margin-left:0"><a href="#">Previous Post</a></li>
           <li style="float: right"><a href="#">Next Post</a></li>
         </ul>
-        <p><b>Categories:</b><a href="#">Java</a> <a href="#">Python</a></p>
-        <p><b>Tags:</b>Tags:<a href="#">HTML</a> <a href="#">CSS</a><a href="#">JavaScript</a><a href="#">PHP</a><a href="#">Python</a></p>
+        <p><b>Categories:</b><a href="blog/{{ tag }}" />{{ post.category }}</a></p> <br>
+        <p><b>Tags:</b><a href="blog/{{ category }}" />{{ post.tag }}</a></p>
 
         <div id="share">Share This Post</div>
 
@@ -51,7 +51,7 @@
         <div class="row comment">
 
 
-        <div class="col-md-1 commenter"><img src="images/saiful.jpg" alt="50x50"></div>
+        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50"></div>
 
         <div class="col-md-10 comment-body">
             <h2 style="font-size: 20px">Binary Digit</h2>
@@ -67,9 +67,9 @@
 
         <div class="row comment">
 
-        <div class="col-md-1 commenter"><img src="images/me.jpg" alt="50x50" width="50px" height="50px"></div>
+        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50" width="50px" height="50px"></div>
         <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">Suliaman Haque</h2>
+            <h2 style="font-size: 20px">xHacker404</h2>
             <p>
                volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed
             </p>
@@ -82,9 +82,9 @@
 
         <div class="row comment">
 
-        <div class="col-md-1 commenter"><img src="images/imam.jpg" alt="50x50" width="50px" height="50px"></div>
+        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50" width="50px" height="50px"></div>
         <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">Imam Hussain</h2>
+            <h2 style="font-size: 20px">xCode</h2>
             <p>
                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?
                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
@@ -92,7 +92,7 @@
             <button type="button" class="btn">Reply</button>
             <div class="row reply" style="margin-top:22px">
                 <div class="col-md-1 commenter">
-                    <img src="images/me.jpg" alt="50x50" >
+                    <img src="{% static 'images/profile.png' %}" alt="50x50" >
                 </div>
 
                 <div class="col-md-9 comment-body">
@@ -113,6 +113,9 @@
 
 
     </div>
+    {% else %}
+    <p>Post Has been deleted OR 404!!!!</p>
+    {% endif %}
 
 
 

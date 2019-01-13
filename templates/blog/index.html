@@ -5,16 +5,16 @@
 	{% if posts %}
 			{% for post in posts %}
 		<div class="post">
-        <h2><a href="single.html"> {{ post.title}} </a></h2>
+        <h2><a href="blog/posts/{{post.id}}/"> {{ post.title}} </a></h2>
         <ul>
-            <li>By  <a href="archeive.html">{{ post.author}}</a></li>
-            <li><a href="archeive.html"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
+            <li>By  <a href="blog/posts/{{post.author}}">{{ post.author}}</a></li>
+            <li><a href="blog/posts/{{post.published_date.date}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
 
         </ul>
         <hr>
         <p>{{post.content}}</p>
 
-        <button class="btn"><a href="single.html">Read More</a></button>
+        <button class="btn"><a href="blog/posts/{{post.id}}">Read More</a></button>
 
     </div>
 		{% endfor %}
