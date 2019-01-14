@@ -57,8 +57,10 @@
             {% block post_block %}
             {% endblock %}
             <div class="col-md-4" id="right-sidebar">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+
+								<form class="form-inline" method="GET" action="{% url 'blog:search_view'%}">
+									{% csrf_token %}
+                    <input class="form-control mr-sm-2" type="text" name="search_box" placeholder="Search">
                     <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                </form>
                  <div class="widget">

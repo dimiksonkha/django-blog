@@ -16,5 +16,6 @@ urlpatterns = [
     path('category/<str:category>/', views.archeive_posts_by_category, name='archeive_category'),
     path('author/<str:author>/', views.archeive_posts_by_author, name='archeive_author'),
     path('posts/<int:pk>/', views.post_details),
+    path('posts/search_result', views.search_view, name='search_view')
 
 ]

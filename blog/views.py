@@ -68,6 +68,12 @@ def archeive_posts_by_date(request, year, month, day):
     context = {'posts':post_list}
     return render(request, 'blog/archeive.html', context)
 
+def search_view(request):
+        if request.method == 'GET' :
+            search_query = request.GET.get('search_box')
+            post_list = Post.objects.filter(title__contains=search_query ) | Post.objects.filter(content__contains=search_query ) | Post.objects.filter(tag__contains=search_query ) | Post.objects.filter(category__contains=search_query )
+        context = {'posts':post_list}
+        return render(request, 'blog/archeive.html', context)
 
 @login_required
 def user_logout(request):
