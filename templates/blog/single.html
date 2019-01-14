@@ -54,10 +54,8 @@
         <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50"></div>
 
         <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">Binary Digit</h2>
-            <p>
-                orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus s quis malesuada nulla.
-            </p>
+            <h2 style="font-size: 20px">{{comments}}</h2>
+            <p>{{post.title}}</p>
             <button type="button" class="btn">Reply</button>
 
         </div>
@@ -84,11 +82,8 @@
 
         <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50" width="50px" height="50px"></div>
         <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">xCode</h2>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!
-            </p>
+            <h2 style="font-size: 20px">{{post.title}}</h2>
+            <p> {{post.title}} </p>
             <button type="button" class="btn">Reply</button>
             <div class="row reply" style="margin-top:22px">
                 <div class="col-md-1 commenter">

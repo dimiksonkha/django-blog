@@ -40,7 +40,9 @@ def index(request):
 
 def post_details(request, pk):
     post_list = Post.objects.get(id=pk)
-    my_dict = {'post':post_list}
+    post_id = post_list.id
+    comments = Comment.objects.filter(post__= post_list)
+    my_dict = {'post':post_list, 'comments':comments}
     return render(request, 'blog/single.html', context=my_dict)
 
 def archeive_posts(request, year):

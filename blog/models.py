@@ -19,7 +19,7 @@ class Post(models.Model):
     tag = models.CharField(max_length=100,default='sql')
     category = models.CharField(max_length=150, default='uncategoried')
     featured_img = models.ImageField(upload_to='featured_images', blank=True)
-    author = models.CharField(max_length=100, default="xHacker404")
+    author = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
     published_date = models.DateTimeField()
 
 
@@ -29,10 +29,10 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    #post = models.ForeignKey(Post)  //have to fix this
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, default=1)  #have to fix this
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
-    author = models.CharField(max_length=100, default="xHacker404")
+    author = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
     published_date = models.DateTimeField()
 
     def __str__(self):
