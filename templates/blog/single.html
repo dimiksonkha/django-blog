@@ -32,11 +32,13 @@
             </div>
             <div class="card-body">
 
-            <form>
+            <form action="{% url 'blog:submit_comment'%}" method="POST">
+              {% csrf_token %}
 
                 <div class="form-group">
 
-                    <textarea class="form-control" id="comment-box" rows="3"></textarea>
+                  <input type="text" name='comment_title'>
+                    <textarea class="form-control" id="comment-box" rows="3" name="comment_content"></textarea>
 
                 </div>
 
@@ -51,62 +53,25 @@
         <div class="row comment">
 
 
-        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50"></div>
-
-        <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">{{comments}}</h2>
-            <p>{{post.title}}</p>
-            <button type="button" class="btn">Reply</button>
-
-        </div>
 
 
-        </div>
+        {% if comments %}
+          {% for comment in comments %}
+          <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50"></div>
+          <div class="col-md-10 comment-body">
+              <h2 style="font-size: 20px">{{comment.title}}</h2>
+              <p>{{comment.content}}</p>
+              <button type="button" class="btn">Reply</button>
 
-        <div class="row comment">
+          </div>
 
-        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50" width="50px" height="50px"></div>
-        <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">xHacker404</h2>
-            <p>
-               volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed
-            </p>
-            <button type="button" class="btn">Reply</button>
-
-        </div>
-
-
-        </div>
-
-        <div class="row comment">
-
-        <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50" width="50px" height="50px"></div>
-        <div class="col-md-10 comment-body">
-            <h2 style="font-size: 20px">{{post.title}}</h2>
-            <p> {{post.title}} </p>
-            <button type="button" class="btn">Reply</button>
-            <div class="row reply" style="margin-top:22px">
-                <div class="col-md-1 commenter">
-                    <img src="{% static 'images/profile.png' %}" alt="50x50" >
-                </div>
-
-                <div class="col-md-9 comment-body">
-                    <h2 style="font-size:20px">xHacker404</h2>
-                    <p>
-                        In dui magna, volutpat id nulla sed, elementum hendrerit orci. Praesent id metus sed exLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus tristique risus. Sed sodales tortor id elit bibendum, in varius augue gravida. In id risus diam. Nunc sed fringilla metus, vitae dapibus mauris. Mauris quis malesuada nulla. In dui magna, volutpat id nulla sed
-                    </p>
-
-                </div>
-
-            </div>
+          {% endfor %}
+        {% else %}
+        <p>Sorry No Comment for this post!</p>
+        {% endif %}
 
 
-        </div>
-
-
-        </div>
-
-
+      </div>
     </div>
     {% else %}
     <p>Post Has been deleted OR 404!!!!</p>

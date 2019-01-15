@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+from django.contrib.auth.models import User
 # Create your views here.
 
 def index(request):
@@ -20,6 +22,7 @@ def index(request):
         year = post.published_date.year
         tag = post.tag
         category = post.category
+
 
         if year not in years:
             years.append(year)
@@ -41,7 +44,7 @@ def index(request):
 def post_details(request, pk):
     post_list = Post.objects.get(id=pk)
     post_id = post_list.id
-    comments = Comment.objects.filter(post__= post_list)
+    comments = post_list.comments.all()
     my_dict = {'post':post_list, 'comments':comments}
     return render(request, 'blog/single.html', context=my_dict)
 
@@ -76,6 +79,16 @@ def search_view(request):
             post_list = Post.objects.filter(title__contains=search_query ) | Post.objects.filter(content__contains=search_query ) | Post.objects.filter(tag__contains=search_query ) | Post.objects.filter(category__contains=search_query )
         context = {'posts':post_list}
         return render(request, 'blog/archeive.html', context)
+
+def submit_comment(request):
+    post = Post.objects.get(id=1)
+    user = User.objects.get(id=1)
+
+    if request.method == 'POST' :
+        comment_title = request.POST.get('comment_title')
+        comment_content = request.POST.get('comment_content')
+        c = Comment(post.id,comment_title, comment_content, user.id, datetime.now())
+        c.save()
 
 @login_required
 def user_logout(request):
