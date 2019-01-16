@@ -81,14 +81,24 @@ def search_view(request):
         return render(request, 'blog/archeive.html', context)
 
 def submit_comment(request):
-    post = Post.objects.get(id=1)
-    user = User.objects.get(id=1)
 
     if request.method == 'POST' :
+
         comment_title = request.POST.get('comment_title')
         comment_content = request.POST.get('comment_content')
-        c = Comment(post.id,comment_title, comment_content, user.id, datetime.now())
+        post_id = request.POST.get('post_id')
+        current_user = request.user
+
+        c = Comment()
+        c.post = Post.objects.get(id=post_id)
+        c.title = comment_title
+        c.content = comment_content
+        c.author = User.objects.get(id=current_user.id)
+        c.published_date = datetime.now()
         c.save()
+
+    return HttpResponseRedirect(reverse('index')) # have to work here
+
 
 @login_required
 def user_logout(request):

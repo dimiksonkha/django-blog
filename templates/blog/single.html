@@ -32,12 +32,13 @@
             </div>
             <div class="card-body">
 
-            <form action="{% url 'blog:submit_comment'%}" method="POST">
+            <form action="{% url 'blog:submit_comment'%}" method="POST"> 
               {% csrf_token %}
 
                 <div class="form-group">
 
                   <input type="text" name='comment_title'>
+                  <input type="hidden" name='post_id' value="{{post.id}}">
                     <textarea class="form-control" id="comment-box" rows="3" name="comment_content"></textarea>
 
                 </div>

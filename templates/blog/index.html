@@ -5,7 +5,7 @@
 	{% if posts %}
 			{% for post in posts %}
 		<div class="post">
-        <h2><a href="blog/posts/{{post.id}}/"> {{ post.title}} </a></h2>
+        <h2><a href="blog/posts/{{post.id}}"> {{ post.title}} </a></h2>
         <ul>
             <li>By  <a href="blog/author/{{post.author}}">{{ post.author}}</a></li>
             <li><a href="blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
