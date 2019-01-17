@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-            <form action="{% url 'blog:submit_comment'%}" method="POST"> 
+            <form action="{% url 'blog:submit_comment'%}" method="POST">
               {% csrf_token %}
 
                 <div class="form-group">
@@ -58,9 +58,9 @@
 
         {% if comments %}
           {% for comment in comments %}
-          <div class="col-md-1 commenter"><img src="{% static 'images/profile.png' %}" alt="50x50"></div>
+          <div class="col-md-1 commenter"><img src="/media/{{comment.author.profile_pic}}" alt="50x50"></div>
           <div class="col-md-10 comment-body">
-              <h2 style="font-size: 20px">{{comment.title}}</h2>
+              <h2 style="font-size: 20px">{{comment.author.user}}</h2>
               <p>{{comment.content}}</p>
               <button type="button" class="btn">Reply</button>
 

@@ -33,7 +33,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE, default=1, related_name='comments')  #have to fix this
     title = models.CharField(max_length=250,blank=True)
     content = models.CharField(max_length=1000, blank=True)
-    author = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+    author = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,default=1)
     published_date = models.DateTimeField(default=datetime.now(), blank=True)
 
     def __str__(self):

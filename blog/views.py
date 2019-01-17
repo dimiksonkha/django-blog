@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from blog.models import Post, Comment
+from blog.models import Post, Comment,UserProfileInfo
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from . import forms
 from django.core.paginator import Paginator
@@ -45,6 +45,7 @@ def post_details(request, pk):
     post_list = Post.objects.get(id=pk)
     post_id = post_list.id
     comments = post_list.comments.all()
+    #user_profile = UserProfileInfo.objects.get(id=4)
     my_dict = {'post':post_list, 'comments':comments}
     return render(request, 'blog/single.html', context=my_dict)
 
@@ -88,12 +89,13 @@ def submit_comment(request):
         comment_content = request.POST.get('comment_content')
         post_id = request.POST.get('post_id')
         current_user = request.user
+        profile = UserProfileInfo.objects.get(user=current_user)
 
         c = Comment()
         c.post = Post.objects.get(id=post_id)
         c.title = comment_title
         c.content = comment_content
-        c.author = User.objects.get(id=current_user.id)
+        c.author = UserProfileInfo.objects.get(id=4) # Have to work here
         c.published_date = datetime.now()
         c.save()
 

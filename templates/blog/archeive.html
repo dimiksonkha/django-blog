@@ -4,22 +4,22 @@
 <div class="col-md-7">
 	{% if posts %}
 			{% for post in posts %}
-		<div class="post">
-        <h2><a href="single.html"> {{ post.title}} </a></h2>
-        <ul>
-            <li>By  <a href="archeive.html">{{ post.author}}</a></li>
-            <li><a href="archeive.html"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
+			<div class="post">
+	        <h2><a href="blog/posts/{{post.id}}"> {{ post.title}} </a></h2>
+	        <ul>
+	            <li>By  <a href="blog/author/{{post.author}}">{{ post.author}}</a></li>
+	            <li><a href="blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date }}</a></li>
 
-        </ul>
-        <hr>
-        <p>{{post.content}}</p>
+	        </ul>
+	        <hr>
+	        <p>{{post.content}}</p>
 
-        <button class="btn"><a href="single.html">Read More</a></button>
+	        <button class="btn"><a href="blog/posts/{{post.id}}">Read More</a></button>
 
-    </div>
+	    </div>
 		{% endfor %}
 
-		<nav aria-label="Page navigation example" style="margin-top:22px">
+		<!-- <nav aria-label="Page navigation example" style="margin-top:22px">
 					<ul class="pagination" style="position: relative; align-self: center">
 
 						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -34,7 +34,7 @@
 						<li class="page-item"><a class="page-link" href="#">9</a></li>
 						<li class="page-item"><a class="page-link" href="#">Next</a></li>
 					</ul>
-		</nav>
+		</nav> -->
 
 		{% else %}
 		<p>Sorry!! No post has been found!!!</p>
