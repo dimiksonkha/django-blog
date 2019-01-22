@@ -64,8 +64,9 @@ def archeive_posts_by_category(request, category):
     context = {'posts':post_list}
     return render(request, 'blog/archeive.html', context)
 
-def archeive_posts_by_author(request, author):
-    post_list = Post.objects.filter(author=author)
+def archeive_posts_by_author(request, username):
+    author = User.objects.get(username=username)
+    post_list = Post.objects.filter(author=author.id)
     context = {'posts':post_list}
     return render(request, 'blog/archeive.html', context)
 
@@ -95,7 +96,8 @@ def submit_comment(request):
         c.post = Post.objects.get(id=post_id)
         c.title = comment_title
         c.content = comment_content
-        c.author = UserProfileInfo.objects.get(id=4) # Have to work here
+        c.author = UserProfileInfo.objects.get(id=profile.id)
+
         c.published_date = datetime.now()
         c.save()
 
