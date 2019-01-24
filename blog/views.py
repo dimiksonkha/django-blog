@@ -82,6 +82,7 @@ def search_view(request):
         context = {'posts':post_list}
         return render(request, 'blog/archeive.html', context)
 
+@login_required
 def submit_comment(request):
 
     if request.method == 'POST' :
