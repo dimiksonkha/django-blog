@@ -16,14 +16,20 @@
             {{post.content}}
         </p>
 
+       <!--
        <ul class="pager">
+        Previous / Next page option will be added in the next version
           <li style="margin-left:0"><a href="#">Previous Post</a></li>
           <li style="float: right"><a href="#">Next Post</a></li>
         </ul>
+      -->
         <p><b>Categories:</b><a href="blog/{{ tag }}" />{{ post.category }}</a></p> <br>
         <p><b>Tags:</b><a href="blog/{{ category }}" />{{ post.tag }}</a></p>
 
-        <div id="share">Share This Post</div>
+      <!--
+      Share option will be add in next version
+      <div id="share">Share This Post</div>
+    -->
 
         <div class="card">
 
@@ -48,8 +54,8 @@
 
             </form>
             {% else %}
-            <form method="POST">
-
+            <form action="#" method="POST">
+              {% csrf_token %}
 
                 <div class="form-group">
 
@@ -59,8 +65,8 @@
 
                 </div>
 
-                <button type="submit" class="btn btn-primary" onclick="alert("helloWorld!");">Submit</button> <!-- have to work here -->
-
+                <button type="submit" class="btn btn-primary" onclick="login_alert()">Submit</button> <!-- have to work here -->
+              </form>
 
             {% endif %}
 
@@ -79,8 +85,10 @@
           <div class="col-md-10 comment-body">
               <h2 style="font-size: 20px">{{comment.author.user}}</h2>
               <p>{{comment.content}}</p>
+              <!--
+              Reply option will be add in next version
               <button type="button" class="btn">Reply</button>
-
+            -->
           </div>
 
           {% endfor %}

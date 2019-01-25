@@ -1,3 +1,3 @@
 function login_alert(){
-  alert("Login to Continue!")
+  alert("Please Login to Comment!");
 }
