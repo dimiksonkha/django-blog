@@ -33,7 +33,7 @@ def index(request):
         if category not in categories:
             categories.append(category)
 
-    paginator = Paginator(post_list, 2) # Show 2 posts per page
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 

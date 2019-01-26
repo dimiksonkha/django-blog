@@ -7,8 +7,8 @@
         {% if post  %}
         <h2>{{post.title}}</h2>
         <ul>
-            <li>By <a href="blog/posts/{{post.author}}">{{post.author}}</a></li>
-            <li><a href="blog/posts/{{post.published_date.date}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date}}</a></li>
+            <li>By <a href="/blog/author/{{post.author}}">{{post.author}}</a></li>
+            <li><a href="/blog/posts/{{post.published_date.date}}"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.published_date}}</a></li>
 
         </ul>
         <hr>
@@ -23,8 +23,8 @@
           <li style="float: right"><a href="#">Next Post</a></li>
         </ul>
       -->
-        <p><b>Categories:</b><a href="blog/{{ tag }}" />{{ post.category }}</a></p> <br>
-        <p><b>Tags:</b><a href="blog/{{ category }}" />{{ post.tag }}</a></p>
+        <p><b>Categories:</b><a href="/blog/category/{{ post.category }}" />{{ post.category }}</a></p> <br>
+        <p><b>Tags:</b><a href="/blog/tag/{{ post.tag }}" />{{ post.tag }}</a></p>
 
       <!--
       Share option will be add in next version
