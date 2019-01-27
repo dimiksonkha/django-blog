@@ -123,10 +123,10 @@ def submit_comment(request):
         c.save()
 
     return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, ))) # have to work here
-    
 
 
-#Log out from b
+
+#Log out from blog
 @login_required
 def user_logout(request):
     logout(request)
