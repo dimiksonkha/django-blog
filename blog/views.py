@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
+#Index page with latest posts
 def index(request):
     post_list = Post.objects.order_by('published_date')
 
@@ -24,7 +25,7 @@ def index(request):
     my_dict = {'posts':posts}
     return render(request, 'blog/index.html', context=my_dict)
 
-
+#Post details page
 def post_details(request, pk):
     post_list = Post.objects.get(id=pk)
     post_id = post_list.id
@@ -32,39 +33,75 @@ def post_details(request, pk):
     my_dict = {'post':post_list, 'comments':comments}
     return render(request, 'blog/single.html', context=my_dict)
 
+#All posts by published year
 def archeive_posts(request, year):
     post_list = Post.objects.filter(published_date__year = year)
-    context = {'year':year,'posts':post_list}
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    context = {'year':year,'posts':posts}
     return render(request, 'blog/archeive.html', context)
 
+#All posts by post tag
 def archeive_posts_by_tag(request, tag):
     post_list = Post.objects.filter(tag=tag)
-    context = {'posts':post_list}
+
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    context = {'posts':posts}
     return render(request, 'blog/archeive.html', context)
 
+#All posts by post category
 def archeive_posts_by_category(request, category):
     post_list = Post.objects.filter(category=category)
-    context = {'posts':post_list}
+
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    context = {'posts':posts}
     return render(request, 'blog/archeive.html', context)
 
+#All posts by a specific author
 def archeive_posts_by_author(request, username):
     author = User.objects.get(username=username)
     post_list = Post.objects.filter(author=author.id)
-    context = {'posts':post_list}
+
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    context = {'posts':posts}
     return render(request, 'blog/archeive.html', context)
 
+#All posts by published_date
 def archeive_posts_by_date(request, year, month, day):
     post_list = Post.objects.filter(published_date__year=year, published_date__month=month, published_date__day=day)
-    context = {'posts':post_list}
+
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    context = {'posts':posts}
     return render(request, 'blog/archeive.html', context)
 
+#Search Result
 def search_view(request):
         if request.method == 'GET' :
             search_query = request.GET.get('search_box')
             post_list = Post.objects.filter(title__contains=search_query ) | Post.objects.filter(content__contains=search_query ) | Post.objects.filter(tag__contains=search_query ) | Post.objects.filter(category__contains=search_query )
-        context = {'posts':post_list}
+
+        paginator = Paginator(post_list, 5) # Show 5 posts per page
+        page = request.GET.get('page')
+        posts = paginator.get_page(page)
+
+        context = {'posts':posts}
         return render(request, 'blog/archeive.html', context)
 
+#Comment submission by logged in user
 @login_required
 def submit_comment(request):
 
@@ -88,11 +125,13 @@ def submit_comment(request):
     return HttpResponseRedirect(reverse('index')) # have to work here
 
 
+#Log out from b
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
+#Authentication and Login
 def user_login(request):
 
     if request.method == 'POST':
@@ -115,6 +154,7 @@ def user_login(request):
         return render(request,'blog/login.html', {})
 
 
+#New user registration
 def registration(request):
     registered = False
 
@@ -148,6 +188,7 @@ def registration(request):
                     'profile_form':profile_form,
                     'registered':registered})
 
+#New Post creation in custom backend.this function is not workable right now.It will updated in next version
 @login_required
 def post_form_view(request):
     form = forms.PostForm()

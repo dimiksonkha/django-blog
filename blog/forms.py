@@ -24,6 +24,7 @@ def check_for_s(value):
 
 
 
+# This class will be workable in the next version
 class PostForm(forms.ModelForm):
     title = forms.CharField(validators=[check_for_s])
     content = forms.CharField(widget=forms.Textarea)

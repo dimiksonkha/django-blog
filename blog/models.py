@@ -14,6 +14,7 @@ class UserProfileInfo(models.Model):
         return self.user.username
 
 
+ 
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
