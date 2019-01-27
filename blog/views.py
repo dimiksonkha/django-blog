@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blog.models import Post, Comment,UserProfileInfo
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
@@ -122,7 +122,8 @@ def submit_comment(request):
         c.published_date = datetime.now()
         c.save()
 
-    return HttpResponseRedirect(reverse('index')) # have to work here
+    return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, ))) # have to work here
+    
 
 
 #Log out from b
