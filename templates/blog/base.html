@@ -65,13 +65,15 @@
                </form>
                  <div class="widget">
                     <h2>Recent Posts</h2>
-										{% if posts %}
-											{% for post in posts %}
+										{% if all_posts %}
 										<ul>
+											{% for post in all_posts %}
+
                         <li> <a href="/blog/posts/{{post.id}}">{{post.title}}</a> </li>
 
-                    </ul>
-											{% endfor %}
+                    	{% endfor %}
+										</ul>
+
 										{% else %}
 										<p>No Recent Post!</p>
 										{% endif %}

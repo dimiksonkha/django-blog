@@ -10,34 +10,18 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.contrib.auth.models import User
+
+
 # Create your views here.
 
 def index(request):
     post_list = Post.objects.order_by('published_date')
-    years = []
-    tags = []
-    categories = []
-
-    for post in post_list :
-        year = post.published_date.year
-        tag = post.tag
-        category = post.category
-
-
-        if year not in years:
-            years.append(year)
-
-        if tag not in tags:
-            tags.append(tag)
-
-        if category not in categories:
-            categories.append(category)
 
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
-    my_dict = {'posts':posts, 'years':years, 'tags':tags, 'categories':categories}
+    my_dict = {'posts':posts}
     return render(request, 'blog/index.html', context=my_dict)
 
 
@@ -45,7 +29,6 @@ def post_details(request, pk):
     post_list = Post.objects.get(id=pk)
     post_id = post_list.id
     comments = post_list.comments.all()
-    #user_profile = UserProfileInfo.objects.get(id=4)
     my_dict = {'post':post_list, 'comments':comments}
     return render(request, 'blog/single.html', context=my_dict)
 
