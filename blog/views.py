@@ -27,10 +27,23 @@ def index(request):
 
 #Post details page
 def post_details(request, pk):
-    post_list = Post.objects.get(id=pk)
-    post_id = post_list.id
-    comments = post_list.comments.all()
-    my_dict = {'post':post_list, 'comments':comments}
+    post = Post.objects.get(id=pk)
+
+    next_posts = Post.objects.filter(published_date__gt=post.published_date)
+    if(next_posts):
+        next_post = next_posts [0]
+    else:
+        next_post = None
+
+    previous_posts = Post.objects.filter(published_date__lt=post.published_date)
+    if(previous_posts):
+        previous_post = previous_posts [previous_posts.count()-1]
+    else:
+        previous_post = None
+
+    post_id = post.id
+    comments = post.comments.all()
+    my_dict = {'post':post, 'comments':comments, 'next_post':next_post, 'previous_post':previous_post}
     return render(request, 'blog/single.html', context=my_dict)
 
 #All posts by published year

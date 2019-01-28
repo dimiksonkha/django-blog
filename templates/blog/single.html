@@ -16,13 +16,18 @@
             {{post.content}}
         </p>
 
-       <!--
+
        <ul class="pager">
-        Previous / Next page option will be added in the next version
-          <li style="margin-left:0"><a href="#">Previous Post</a></li>
-          <li style="float: right"><a href="#">Next Post</a></li>
+
+          {% if previous_post %}
+          <li style="margin-left:0"><a href="/blog/posts/{{previous_post.id}}">Previous Post</a></li>
+          {% endif%}
+
+          {% if next_post %}
+          <li style="float: right"><a href="/blog/posts/{{next_post.id}}">Next Post</a></li>
+          {% endif %}
         </ul>
-      -->
+
         <p><b>Categories:</b><a href="/blog/category/{{ post.category }}" />{{ post.category }}</a></p> <br>
         <p><b>Tags:</b><a href="/blog/tag/{{ post.tag }}" />{{ post.tag }}</a></p>
 
