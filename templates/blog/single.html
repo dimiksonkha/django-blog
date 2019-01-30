@@ -34,7 +34,7 @@
 
 
       <div id="share">Share This Post</div>
-    
+
 
         <div class="card">
 
@@ -90,10 +90,66 @@
           <div class="col-md-10 comment-body">
               <h2 style="font-size: 20px">{{comment.author.user}}</h2>
               <p>{{comment.content}}</p>
-              <!--
-              Reply option will be add in next version
-              <button type="button" class="btn">Reply</button>
-            -->
+              {% if comment.replies.all %}
+                {% for reply in comment.replies.all %}
+                <div class="row reply" style="margin-top:22px">
+
+                    <div class="col-md-1 commenter">
+                        <img src="/media/{{reply.author.profile_pic}}" alt="50x50" >
+                    </div>
+
+                    <div class="col-md-9 comment-body">
+                        <h2 style="font-size:20px">{{reply.author.user}}</h2>
+                        <p>{{ reply.title}} </p>
+                        {% if forloop.last %}
+                        <form action="{% url 'blog:submit_reply'%}" method="POST">
+                          {% csrf_token %}
+
+                            <div class="form-group">
+
+                              <input type="text" name='reply_title'>
+                              <input type="hidden" name='post_id' value="{{comment.post.id}}">
+                              <input type="hidden" name='comment_id' value="{{comment.id}}">
+                                <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
+
+                            </div>
+                            {% if user.is_authenticated %}
+                            <button type="submit" class="btn btn-primary">Reply</button>
+                            {% else %} <!-- have to work here -->
+                            <button type="submit" class="btn btn-primary" onclick="login_alert()">Reply</button>
+                            {% endif %}
+                          </form>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+                {% endfor %}
+
+
+              {% else %}
+                <button id="reply" type="button" class="btn">Reply</button>
+                <form id="reply-form" action="{% url 'blog:submit_reply'%}" method="POST">
+                  {% csrf_token %}
+
+                    <div class="form-group">
+
+                      <input type="text" name='reply_title'>
+                      <input type="hidden" name='post_id' value="{{comment.post.id}}">
+                      <input type="hidden" name='comment_id' value="{{comment.id}}">
+                        <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
+
+                    </div>
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-primary">Reply</button>
+                    {% else %} <!-- have to work here -->
+                    <button type="submit" class="btn btn-primary" onclick="login_alert()">Reply</button>
+                    {% endif %}
+                  </form>
+              {% endif %}
+
+
+
           </div>
 
           {% endfor %}

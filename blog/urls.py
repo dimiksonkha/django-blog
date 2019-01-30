@@ -17,5 +17,6 @@ urlpatterns = [
     path('posts/<int:pk>/', views.post_details, name='post_details'),
     path('posts/search_result', views.search_view, name='search_view'),
     path('submit_comment', views.submit_comment, name='submit_comment'),
+    path('submit_reply', views.submit_reply, name='submit_reply'),
 
 ]

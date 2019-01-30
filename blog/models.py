@@ -14,7 +14,7 @@ class UserProfileInfo(models.Model):
         return self.user.username
 
 
- 
+
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
@@ -37,5 +37,16 @@ class Comment(models.Model):
     author = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,default=1)
     published_date = models.DateTimeField(default=datetime.now(), blank=True)
 
+
+    def __str__(self):
+        return self.title
+
+class Reply(models.Model):
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE, default=10, related_name='replies')  #have to fix this
+    title = models.CharField(max_length=250,blank=True)
+    content = models.CharField(max_length=1000, blank=True)
+    author = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,default=1)
+    published_date = models.DateTimeField(default=datetime.now(), blank=True)
+    
     def __str__(self):
         return self.title
