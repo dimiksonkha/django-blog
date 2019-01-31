@@ -1,6 +1,6 @@
 from blog.models import Post
 
-#Popularing dictionary for all_posts, tags, categories, post years 
+#Popularing dictionary for all_posts, tags, categories, post years
 def post_widget(request):
     all_posts = Post.objects.order_by('published_date')
     years = []
@@ -22,9 +22,9 @@ def post_widget(request):
         if category not in categories:
             categories.append(category)
 
-        return {
-        'all_posts':all_posts,
-        'years':years,
-        'tags':tags,
-        'categories':categories
-        }
+    return {
+    'all_posts':all_posts,
+    'years':years,
+    'tags':tags,
+    'categories':categories
+    }
