@@ -128,8 +128,8 @@
 
 
               {% else %}
-                <button id="reply" type="button" class="btn">Reply</button>
-                <form id="reply-form" action="{% url 'blog:submit_reply'%}" method="POST">
+                <button type="button" class="btn reply">Reply</button>
+                <form class="reply-form" action="{% url 'blog:submit_reply'%}" method="POST">
                   {% csrf_token %}
 
                     <div class="form-group">

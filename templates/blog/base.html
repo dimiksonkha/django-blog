@@ -144,12 +144,17 @@
     				showCount: false,
         });
 
-				// $("#reply-form").hide();
-				// 
-				// $("#reply").on("click", function(){
-				// 	$("#reply-form").show();
-				// 	$("#reply").hide();
-				// });
+				$(".reply-form").hide();
+
+				$(".reply").on("click", function(e){
+
+					var target = $( e.target );
+
+					$(target).siblings(".reply-form").show();
+					$(target).hide();
+
+
+				});
 
 
 
