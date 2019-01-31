@@ -149,9 +149,11 @@
 				$(".reply").on("click", function(e){
 
 					var target = $( e.target );
-
 					$(target).siblings(".reply-form").show();
-					$(target).hide();
+					if(target.value()=="Reply"){
+						$(target).hide();	
+					}
+
 
 
 				});

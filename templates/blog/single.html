@@ -102,6 +102,7 @@
                         <h2 style="font-size:20px">{{reply.author.user}}</h2>
                         <p>{{ reply.title}} </p>
                         {% if forloop.last %}
+                        {% if user.is_authenticated %}
                         <form action="{% url 'blog:submit_reply'%}" method="POST">
                           {% csrf_token %}
 
@@ -113,12 +114,23 @@
                                 <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
 
                             </div>
-                            {% if user.is_authenticated %}
                             <button type="submit" class="btn btn-primary">Reply</button>
-                            {% else %} <!-- have to work here -->
-                            <button type="submit" class="btn btn-primary" onclick="login_alert()">Reply</button>
-                            {% endif %}
                           </form>
+                          {% else %}
+                          <form action="#" method="POST">
+                            {% csrf_token %}
+
+                              <div class="form-group">
+
+                                <input type="text" name='reply_title'>
+                                <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
+
+                              </div>
+                              <button type="submit" class="btn btn-primary" onclick="login_alert()">Reply</button>
+                            </form>
+
+                          {% endif %}
+
                         {% endif %}
                     </div>
 
