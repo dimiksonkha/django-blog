@@ -92,7 +92,7 @@
               <p>{{comment.content}}</p>
               {% if comment.replies.all %}
                 {% for reply in comment.replies.all %}
-                <div class="row reply" style="margin-top:22px">
+                <div class="row rpl" style="margin-top:22px">
 
                     <div class="col-md-1 commenter">
                         <img src="/media/{{reply.author.profile_pic}}" alt="50x50" >
