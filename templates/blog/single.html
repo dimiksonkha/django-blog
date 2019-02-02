@@ -141,6 +141,7 @@
 
               {% else %}
                 <button type="button" class="btn reply">Reply</button>
+                {% if user.is_authenticated %}
                 <form class="reply-form" action="{% url 'blog:submit_reply'%}" method="POST">
                   {% csrf_token %}
 
@@ -152,9 +153,21 @@
                         <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
 
                     </div>
-                    {% if user.is_authenticated %}
+
                     <button type="submit" class="btn btn-primary">Reply</button>
                     {% else %} <!-- have to work here -->
+                    <form class="reply-form" action="#" method="POST">
+                      {% csrf_token %}
+
+                        <div class="form-group">
+
+                          <input type="text" name='reply_title'>
+                          <input type="hidden" name='post_id' value="{{comment.post.id}}">
+                          <input type="hidden" name='comment_id' value="{{comment.id}}">
+                            <textarea class="form-control" id="comment-box" rows="3" name="reply_content"></textarea>
+
+                        </div>
+
                     <button type="submit" class="btn btn-primary" onclick="login_alert()">Reply</button>
                     {% endif %}
                   </form>
