@@ -42,7 +42,6 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE, default=1, related_name='comments')
-    title = models.CharField(max_length=250,blank=True)
     content = models.CharField(max_length=1000, blank=True)
     author = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,default=1)
     created_date = models.DateTimeField(default=datetime.now())
@@ -62,8 +61,7 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
-    comment = models.ForeignKey(Comment,on_delete=models.CASCADE, default=10, related_name='replies')  #have to fix this
-    title = models.CharField(max_length=250,blank=True)
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE, default=10, related_name='replies')
     content = models.CharField(max_length=1000, blank=True)
     author = models.ForeignKey(UserProfileInfo,on_delete=models.CASCADE,default=1)
     published_date = models.DateTimeField(default=datetime.now(), blank=True)

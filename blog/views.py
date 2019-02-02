@@ -131,10 +131,8 @@ def submit_comment(request):
 
         c = Comment()
         c.post = Post.objects.get(id=post_id)
-        c.title = comment_title
         c.content = comment_content
         c.author = UserProfileInfo.objects.get(id=profile.id)
-
         c.published_date = datetime.now()
         c.save()
 
@@ -154,10 +152,8 @@ def submit_reply(request):
 
         r = Reply()
         r.comment = Comment.objects.get(id=comment_id)
-        r.title = reply_title
         r.content = reply_content
         r.author = UserProfileInfo.objects.get(id=profile.id)
-
         r.published_date = datetime.now()
         r.save()
 
