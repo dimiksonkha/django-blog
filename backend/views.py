@@ -33,3 +33,38 @@ def posts(request):
 
     my_dict = {'posts':posts}
     return render(request, 'backend/posts.html', context=my_dict)
+
+def new_post(request):
+
+    return render(request, 'backend/new_post.html')
+
+#Post edit page
+def edit_post(request, pk):
+    post = Post.objects.get(id=pk)
+
+    my_dict = {'post':post}
+    return render(request, 'backend/edit_post.html', context=my_dict)
+
+def comments(request):
+
+    return render(request, 'backend/comments.html')
+
+def users(request):
+
+    return render(request, 'backend/users.html')
+
+def tags(request):
+
+    return render(request, 'backend/tags.html')
+
+def categories(request):
+
+    return render(request, 'backend/categories.html')
+
+def settings(request):
+
+    return render(request, 'backend/settings.html')
+
+def profile(request):
+
+    return render(request, 'backend/profile.html')

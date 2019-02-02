@@ -5,6 +5,10 @@
 
 
 		<div class="post" style="height:500px; overflow: scroll">
+			<div class="" style="float:right; margin-bottom:10px">
+				<a href="{% url 'backend:new_post'%}"class="btn btn-primary"> + New Post </a>
+			</div>
+
 
 				<table class="table">
 					<thead>
@@ -27,7 +31,7 @@
 								<td><a href="/blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}">{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}</td>
 								<td>{{post.status}}</td>
 								<td>
-										<a href="/backend/post_edit.html" class="btn btn-success">edit</a>
+										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
 										<button class="btn btn-danger">delete</button>
 								</td>
 								<td></td>

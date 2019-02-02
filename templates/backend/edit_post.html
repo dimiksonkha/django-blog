@@ -6,20 +6,24 @@
 
 		<div class="post">
 
-				<div class="form-group">
 
-						<label for="post-title">Post Title:</label>
-						<input type="text" id="post-title" class="form-control" value="">
 
-				</div>
+					<div class="form-group">
 
-				<div class="form-group">
-						<label for="content">Post Content:</label>
-						<textarea class="form-control" rows="6" id="content">
+							<label for="post-title">Post Title:</label>
+							<input type="text" id="post-title" class="form-control" value="{{post.title}}">
 
-						</textarea>
+					</div>
 
-				</div>
+					<div class="form-group">
+							<label for="content">Post Content:</label>
+							<textarea class="form-control" rows="6" id="content">
+								{{post.content}}
+							</textarea>
+
+					</div>
+
+
 
 				<div class="form-group" style="float: right">
 						<button id="draft" class="btn btn-default">Save as Draft</button>
@@ -43,7 +47,7 @@
 				<label class="input-group-text" for="category">Category</label>
 			</div>
 			<select class="custom-select" id="category">
-				<option selected value="c">C</option>
+				<option selected value="{{post.category}}">{{post.category}}</option>
 				<option value="java">Java</option>
 				<option value="php">PHP</option>
 				<option value="python">Python</option>
@@ -57,7 +61,7 @@
 				<label class="input-group-text" for="category">Tags</label>
 			</div>
 			<select class="custom-select" id="category">
-				<option selected value="c">C</option>
+				<option selected value="{{post.tag}}">{{post.tag}}</option>
 				<option value="java">algorithm</option>
 				<option value="php">php</option>
 				<option value="python">data structure</option>
@@ -68,7 +72,7 @@
 		<div class="form-group">
 				<label for="file" >Select a Featured Image</label>
 				<input type="file" id="file" class="form-control" onchange="readURL(this);">
-				<img id="featured_image" src="" alt="Featured Image">
+				<img id="featured_image" src="/media/{{post.featured_img}}" alt="{{post.title}}" width="200px" height="200px">
 		</div>
 
 		</div>

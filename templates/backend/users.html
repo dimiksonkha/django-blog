@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends 'backend/base.html'%}
+{% block content %}
+<div class="col-md-10" >
+
+
+    <div class="post" style="height:1200px; overflow: scroll">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">User Avatar</th>
+              <th scope="col">Name</th>
+              <th scope="col">UserName</th>
+              <th scope="col">Role</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+               <td style="width: auto"><img src="images/me.jpg" alt="Sulaiman Haque" width="100px" height="100px;"></td>
+              <td> <a href="profile.html">Sulaiman Haque</a> </td>
+              <td>BinaryDigit</td>
+              <td>Admin</td>
+              <td>
+                  <select class="custom-select" style="width:200px">
+                    <option>
+                      Make Moderator
+                    </option>
+
+                      <option>
+                        Make Author
+                      </option>
+                      <option>
+                      Remove User
+                      </option>
+                  </select>
+                  <button class="btn btn-dark">Apply</button>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th scope="row">2</th>
+               <td style="width: auto"><img src="images/saiful.jpg" alt="Saiful Islam" width="100px" height="100px;"></td>
+              <td> <a href="profile.html">Saiful Islam</a> </td>
+              <td>Saiful</td>
+              <td>Moderator</td>
+              <td>
+                  <select class="custom-select" style="width:200px;">
+                    <option>
+                      Make Admin
+
+                    </option>
+                     <option>
+                      Make Author
+                     </option>
+                      <option>
+                      Remove User
+                      </option>
+                  </select>
+                  <button class="btn btn-dark">Apply</button>
+              </td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th scope="row">3</th>
+               <td style="width: auto"><img src="images/imam.jpg" alt="Saiful Islam" width="100px" height="100px;"></td>
+              <td> <a href="profile.html">Imam Hussain</a> </td>
+              <td>imam</td>
+              <td>Author</td>
+              <td>
+                  <select class="custom-select" style="width:200px;">
+                    <option>
+                      Make Admin
+
+                    </option>
+                     <option>
+                      Make Moderator
+                     </option>
+                      <option>
+                      Remove User
+                      </option>
+                  </select>
+                  <button class="btn btn-dark">Apply</button>
+              </td>
+              <td></td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+
+
+
+    </div>
+
+
+
+</div>
+{% endblock %}
