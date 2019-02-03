@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 {% extends 'backend/base.html'%}
 {% block content %}
-<div class="col-md-10" >
+<div class="col-md-4">
+
+		<div class="post">
+			<form method="post" action="process.html">
+						<div class="form-group">
+								<img src="images/me.jpg" alt="Icon" id="icon" width="200px;" height="200px;" >
+								<input type="file" id="file" value="change blog icon" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
+						</div>
+						<div class="form-group">
+								<img src="images/me.jpg" alt="Logo" id="logo" width="200px;" height="200px;" >
+								<input type="file" id="file" value="change blog logo" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
+						</div>
 
 
-		<div class="post" style="height:500px; overflow: scroll">
-			<div class="" style="float:right; margin-bottom:10px">
-				<a href="{% url 'backend:new_post'%}"class="btn btn-primary"> + New Post </a>
-			</div>
+				<div class="form-group">
+						<label for="name">Blog Title:</label>
+						<input type="text" class="form-control" name="title" id="title" value="Django Blog">
+				</div>
+
+				<div class="form-group">
+						<label for="name">Blog Tagline:</label>
+						<input type="text" class="form-control" name="tagline" id="tagline" value="Just another DjangoBlog site">
+				</div>
+
+				<div class="form-group">
+						<label for="name">Meta:Keywords</label>
+						<input type="text" class="form-control" name="tagline" id="Keywords" value="python, django, blog">
+				</div>
+				<div class="form-group">
+						<label for="name">Meta:Description</label>
+						<input type="text" class="form-control" name="tagline" id="description" value="This is blog site for python related topcis">
+				</div>
+
+				<div class="form-group">
+						<label for="name">Post per page</label>
+						<input type="number" class="form-control" name="tagline" id="post_per_page" value="5">
+				</div>
 
 
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Post Title</th>
-							<th scope="col">Author</th>
-							<th scope="col">Date Modified</th>
-							<th scope="col">Status</th>
-							<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% if posts %}
-							{% for post in posts %}
-							<tr>
-								<th scope="row">1</th>
-								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
-								<td><a href="/blog/author/{{post.author}}">{{ post.author}}</a></td>
-								<td><a href="/blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}">{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}</td>
-								<td>{{post.status}}</td>
-								<td>
-										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
-										<button class="btn btn-danger">delete</button>
-								</td>
-								<td></td>
-							</tr>
-							{% endfor %}
-						{% endif %}
-					</tbody>
-				</table>
 
+					<input type="submit" value="Save" class="btn btn-primary">
+
+			</form>
 
 
 		</div>
+
+
+
+</div>
+
+<div class="col-md-6">
+
+
+
+</div>
+
+
 </div>
 {% endblock %}
