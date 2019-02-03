@@ -56,7 +56,7 @@ class Comment(models.Model):
         return reverse('blog:post_details', args=(post_id, ))
 
     def __str__(self):
-        return self.title
+        return self.content
 
 
 

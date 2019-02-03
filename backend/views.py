@@ -46,12 +46,15 @@ def edit_post(request, pk):
     return render(request, 'backend/edit_post.html', context=my_dict)
 
 def comments(request):
+    comments = Comment.objects.all();
+    my_dict = {'comments':comments}
 
-    return render(request, 'backend/comments.html')
+    return render(request, 'backend/comments.html', context=my_dict)
 
 def users(request):
-
-    return render(request, 'backend/users.html')
+    users = UserProfileInfo.objects.all()
+    my_dict = {'users':users}
+    return render(request, 'backend/users.html', context=my_dict)
 
 def tags(request):
 

@@ -17,34 +17,52 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
+						{% if comments %}
+							{% for comment in comments %}
+							<tr>
+								<th scope="row">1</th>
 
-							<td style="width:400px;">
-									<p>nice post!</p>
-									<a href="#" class="btn btn-success">View in the Post</a>
+								<td style="width:400px;">
+										<p>{{ comment.content }}</p>
+										<a href="#" class="btn btn-success">View in the Post</a>
 
-							</td>
-							<td>BinaryDigit</td>
-							<td>Awaiting for Moderation </td>
-							<td>
-									<select class="custom-select" style="width:200px">
-										<option>
-											Approve
-										</option>
-
+								</td>
+								<td>{{ comment.author }}</td>
+								{% if comment.is_approved %}
+								<td>Approved</td>
+								<td>
+										<select class="custom-select" style="width:200px">
+												<option>
+												Move to Trash
+												</option>
+										</select>
+										<button class="btn btn-dark">Apply</button>
+								</td>
+								{% else %}
+								<td>Awaiting for Moderation </td>
+								<td>
+										<select class="custom-select" style="width:200px">
 											<option>
-											 Mark As Spam
+												Approve
 											</option>
-											<option>
-											Move to Trash
-											</option>
-									</select>
-									<button class="btn btn-dark">Apply</button>
-							</td>
 
-						</tr>
+												<option>
+												 Mark As Spam
+												</option>
+												<option>
+												Move to Trash
+												</option>
+										</select>
+										<button class="btn btn-dark">Apply</button>
+								</td>
+								{% endif %}
 
+
+
+							</tr>
+
+							{% endfor %}
+						{% endif %}
 
 
 

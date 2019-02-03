@@ -18,31 +18,54 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-               <td style="width: auto"><img src="images/me.jpg" alt="Sulaiman Haque" width="100px" height="100px;"></td>
-              <td> <a href="profile.html">Sulaiman Haque</a> </td>
-              <td>BinaryDigit</td>
-              <td>Admin</td>
-              <td>
-                  <select class="custom-select" style="width:200px">
+        {% if users %}
+          {% for profile in users %}
+          <tr>
+            <th scope="row">1</th>
+             <td style="width: auto"><img src="/media/{{profile.profile_pic}}" alt="xHacker404" width="50px" height="50px"> </td>
+            <td> <a href="{% url 'backend:profile'%}">{{profile.user.first_name}} {{profile.user.last_name}}</a> </td>
+            <td>{{profile.user.username}}</td>
+            {% if profile.user.is_superuser %}
+            <td>Admin</td>
+            <td>
+                <select class="custom-select" style="width:200px">
+                  <option>
+                    Make Moderator
+                  </option>
+
                     <option>
-                      Make Moderator
+                      Make Author
                     </option>
+                    <option>
+                    Remove User
+                    </option>
+                </select>
+                <button class="btn btn-dark">Apply</button>
+            </td>
+            {% else %}
+            <td> Moderator </td>
+            <td>
+                <select class="custom-select" style="width:200px">
+                  <option>
+                    Make Admin
+                  </option>
 
-                      <option>
-                        Make Author
-                      </option>
-                      <option>
-                      Remove User
-                      </option>
-                  </select>
-                  <button class="btn btn-dark">Apply</button>
-              </td>
-              <td></td>
-            </tr>
+                    <option>
+                      Make Author
+                    </option>
+                    <option>
+                    Remove User
+                    </option>
+                </select>
+                <button class="btn btn-dark">Apply</button>
+            </td>
+            {% endif %}
+            <td></td>
+          </tr>
+          {% endfor %}
+        {% endif %}
 
-    
+
 
 
 
