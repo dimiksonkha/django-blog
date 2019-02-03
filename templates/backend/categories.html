@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 {% extends 'backend/base.html'%}
 {% block content %}
-<div class="col-md-10" >
+<div class="col-md-6">
 
 
-		<div class="post" style="height:500px; overflow: scroll">
-			<div class="" style="float:right; margin-bottom:10px">
-				<a href="{% url 'backend:new_post'%}"class="btn btn-primary"> + New Post </a>
-			</div>
+		<div class="post">
+					 <div class="form-group">
+
+				<label for="new_tag">Add New Category</label>
+				<input type="text" class="form-control" id="new_tag">
+
+				</div>
+				<button class="btn btn-primary">Add This Cateogry </button>
 
 
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Post Title</th>
-							<th scope="col">Author</th>
-							<th scope="col">Date Modified</th>
-							<th scope="col">Status</th>
-							<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% if posts %}
-							{% for post in posts %}
-							<tr>
-								<th scope="row">1</th>
-								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
-								<td><a href="/blog/author/{{post.author}}">{{ post.author}}</a></td>
-								<td><a href="/blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}">{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}</td>
-								<td>{{post.status}}</td>
-								<td>
-										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
-										<button class="btn btn-danger">delete</button>
-								</td>
-								<td></td>
-							</tr>
-							{% endfor %}
-						{% endif %}
-					</tbody>
-				</table>
+		<div class="card" style="margin-top: 44px;">
+		</div>
+		<div class="card-body">
+				<h2 class="card-title" style="font-size:20px;">Available Categories:</h2>
+				<ul>
+						<li>C</li>
+						<li>PHP</li>
+						<li>Java</li>
+						<li>Python</li>
+						<li>JavaScript</li>
 
+				</ul>
+
+		</div>
 
 
 		</div>
+
+
+
+</div>
+
+<div class="col-md-2">
+
+
+
+</div>
+
+
 </div>
 {% endblock %}

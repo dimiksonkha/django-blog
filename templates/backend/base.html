@@ -22,7 +22,7 @@
 
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="index.html">Dashboard</a>
+              <a class="navbar-brand" href="{% url 'index' %}">Dashboard</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -85,12 +85,29 @@
     </div>
     </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/script.js"></script>
+<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/jquery-ui.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
 <script type="text/javascript">
+	// //$("a.list-group-item").addClass('active');
+	// $(".btn-dark").on("click", function(e){
+	// 	var target = $(e.target);
+	// 	$(target).toggleClass('btn');
+	//
+	// });
 
+	function readURL(input) {
+			if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+							$('#profile').attr('src', e.target.result).width(150).height(200);
+					};
+
+					reader.readAsDataURL(input.files[0]);
+			}
+	}
 </script>
 </body>
 </html>

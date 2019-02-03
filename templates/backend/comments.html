@@ -5,44 +5,112 @@
 
 
 		<div class="post" style="height:500px; overflow: scroll">
-			<div class="" style="float:right; margin-bottom:10px">
-				<a href="{% url 'backend:new_post'%}"class="btn btn-primary"> + New Post </a>
-			</div>
-
 
 				<table class="table">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Post Title</th>
-							<th scope="col">Author</th>
-							<th scope="col">Date Modified</th>
+							<th scope="col">Comment</th>
+							<th scope="col">By</th>
 							<th scope="col">Status</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% if posts %}
-							{% for post in posts %}
-							<tr>
-								<th scope="row">1</th>
-								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
-								<td><a href="/blog/author/{{post.author}}">{{ post.author}}</a></td>
-								<td><a href="/blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}">{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}</td>
-								<td>{{post.status}}</td>
-								<td>
-										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
-										<button class="btn btn-danger">delete</button>
-								</td>
-								<td></td>
-							</tr>
-							{% endfor %}
-						{% endif %}
+						<tr>
+							<th scope="row">1</th>
+
+							<td style="width:400px;">
+									<p>
+											lorem is not just a normal snippet—it’s actually a generator. Every time you expand it, it will generate a 30-words dummy text, splitted into a few sentences.
+									</p>
+									<a href="single.html" class="btn btn-success">View in the Post</a>
+
+							</td>
+							<td>BinaryDigit</td>
+							<td>Awaiting for Moderation </td>
+							<td>
+									<select class="custom-select" style="width:200px">
+										<option>
+											Approve
+										</option>
+
+											<option>
+											 Mark As Spam
+											</option>
+											<option>
+											Move to Trash
+											</option>
+									</select>
+									<button class="btn btn-dark">Apply</button>
+							</td>
+
+						</tr>
+
+						<tr>
+							<th scope="row">2</th>
+
+							<td style="width:400px;">
+									<p>
+											lorem is not just a normal snippet—it’s actually a generator. Every time you expand it, it will generate a 30-words dummy text, splitted into a few sentences.
+									</p>
+									<a href="single.html" class="btn btn-success">View in the Post</a>
+							</td>
+							<td>BinaryDigit</td>
+							<td>Approved </td>
+							<td>
+									<select class="custom-select" style="width:200px">
+
+											<option>
+											 Mark As Spam
+											</option>
+											<option>
+											Move to Trash
+											</option>
+									</select>
+									<button class="btn btn-dark">Apply</button>
+							</td>
+
+						</tr>
+
+						<tr>
+							<th scope="row">3</th>
+
+							<td style="width:400px;">
+									<p>
+											lorem is not just a normal snippet—it’s actually a generator. Every time you expand it, it will generate a 30-words dummy text, splitted into a few sentences.
+									</p>
+									<a href="single.html" class="btn btn-success">View in the Post</a>
+							</td>
+							<td>BinaryDigit</td>
+							<td>Marked As Spam </td>
+							<td>
+									<select class="custom-select" style="width:200px">
+
+											<option>
+											Move to Trash
+											</option>
+									</select>
+									<button class="btn btn-dark">Apply</button>
+							</td>
+
+						</tr>
+
+
+
+
+
 					</tbody>
 				</table>
 
 
 
 		</div>
+
+
+
 </div>
+
+</div>
+
 {% endblock %}
