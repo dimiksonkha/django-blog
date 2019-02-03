@@ -31,19 +31,19 @@ def posts(request):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
-    my_dict = {'posts':posts}
+    my_dict = {'posts':posts, 'post_page':'post_page'}
     return render(request, 'backend/posts.html', context=my_dict)
 
 def new_post(request):
-
-    return render(request, 'backend/new_post.html')
+    my_dict = {'new_post':'new_post'}
+    return render(request, 'backend/posts.html', context=my_dict)
 
 #Post edit page
 def edit_post(request, pk):
     post = Post.objects.get(id=pk)
 
-    my_dict = {'post':post}
-    return render(request, 'backend/edit_post.html', context=my_dict)
+    my_dict = {'post':post, 'edit_post':'edit_post'}
+    return render(request, 'backend/posts.html', context=my_dict)
 
 def comments(request):
     comments = Comment.objects.all();
@@ -57,12 +57,14 @@ def users(request):
     return render(request, 'backend/users.html', context=my_dict)
 
 def tags(request):
+    my_dict = {'taxonomy':'Tag'}
 
-    return render(request, 'backend/tags.html')
+    return render(request, 'backend/taxonomy.html', context=my_dict)
 
 def categories(request):
+    my_dict = {'taxonomy':'Category'}
 
-    return render(request, 'backend/categories.html')
+    return render(request, 'backend/taxonomy.html', context=my_dict)
 
 def settings(request):
 

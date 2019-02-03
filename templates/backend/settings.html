@@ -4,7 +4,8 @@
 <div class="col-md-4">
 
 		<div class="post">
-			<form method="post" action="process.html">
+			<form method="post" action="{% url 'backend:settings'%}">
+				{% csrf_token %}
 						<div class="form-group">
 								<img src="images/me.jpg" alt="Icon" id="icon" width="200px;" height="200px;" >
 								<input type="file" id="file" value="change blog icon" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">

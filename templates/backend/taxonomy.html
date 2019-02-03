@@ -7,17 +7,21 @@
 		<div class="post">
 					 <div class="form-group">
 
-				<label for="new_tag">Add New Category</label>
+				<label for="new_tag">Add New {{taxonomy}}</label>
 				<input type="text" class="form-control" id="new_tag">
 
 				</div>
-				<button class="btn btn-primary">Add This Cateogry </button>
+				<button class="btn btn-primary">Add This {{taxonomy}} </button>
 
 
 		<div class="card" style="margin-top: 44px;">
 		</div>
 		<div class="card-body">
+				{% if taxonomy == 'Category' %}
 				<h2 class="card-title" style="font-size:20px;">Available Categories:</h2>
+				{% else %}
+				<h2 class="card-title" style="font-size:20px;">Available Tags:</h2>
+				{% endif %}
 				<ul>
 						<li>C</li>
 						<li>PHP</li>
