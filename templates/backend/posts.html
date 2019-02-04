@@ -26,7 +26,7 @@
 						{% if posts %}
 							{% for post in posts %}
 							<tr>
-								<th scope="row">1</th>
+								<th scope="row">{{ forloop.counter }}</th>
 								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
 								<td><a href="/blog/author/{{post.author}}">{{ post.author}}</a></td>
 								<td>{{post.updated_date.year}}/{{post.updated_date.month}}/{{post.updated_date.day}}</td>
