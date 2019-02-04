@@ -21,12 +21,16 @@ class Post(models.Model):
     tag = models.CharField(max_length=100,default='sql')
     category = models.CharField(max_length=150, default='uncategoried')
     featured_img = models.ImageField(upload_to='featured_images', blank=True)
+    status = models.CharField(max_length=100, default='drafted')
     author = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
     created_date = models.DateTimeField(default=datetime.now())
     published_date = models.DateTimeField(blank=True, null=True)
+    updated_date = models.DateTimeField(blank=True, null=True)
 
     def publish(self):
+        self.status = 'published'
         self.published_date = datetime.now()
+        self.updated_date = datetime.now()
         self.save()
 
     def approved_comments(self):

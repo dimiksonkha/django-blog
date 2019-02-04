@@ -29,7 +29,7 @@
 								<th scope="row">1</th>
 								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
 								<td><a href="/blog/author/{{post.author}}">{{ post.author}}</a></td>
-								<td><a href="/blog/{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}">{{post.published_date.year}}/{{post.published_date.month}}/{{post.published_date.day}}</td>
+								<td>{{post.updated_date.year}}/{{post.updated_date.month}}/{{post.updated_date.day}}</td>
 								<td>{{post.status}}</td>
 								<td>
 										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
