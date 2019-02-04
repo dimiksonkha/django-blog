@@ -45,6 +45,13 @@ def edit_post(request, pk):
     my_dict = {'post':post, 'edit_post':'edit_post'}
     return render(request, 'backend/posts.html', context=my_dict)
 
+# Post Delete View
+def delete_post(request, pk):
+    post = Post.objects.get(id=pk)
+    post.delete()
+
+    return HttpResponseRedirect(reverse('backend:posts'))
+
 def comments(request):
     comments = Comment.objects.all();
     my_dict = {'comments':comments}
