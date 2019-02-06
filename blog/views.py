@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 
 #Index page with latest posts
 def index(request):
-    post_list = Post.objects.order_by('published_date')
+    post_list = Post.objects.filter(status='published').order_by('published_date')
 
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')

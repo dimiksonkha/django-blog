@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 #Populating dictionary for all_posts, tags, categories, post years
 def post_widget(request):
-    all_posts = Post.objects.order_by('published_date')
+    all_posts = Post.objects.filter(status='published').order_by('published_date')
     years = []
     tags = []
     categories = []
