@@ -52,26 +52,28 @@
 
 
 		<div class="post">
-
+				<form action="{% url 'backend:create_post'%}" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
 				<div class="form-group">
 
 						<label for="post-title">Post Title:</label>
-						<input type="text" id="post-title" class="form-control" value="">
+						<input type="text" id="post-title" class="form-control" name="post_title" value="">
 
 				</div>
 
 				<div class="form-group">
 						<label for="content">Post Content:</label>
-						<textarea class="form-control" rows="6" id="content">
+						<textarea class="form-control" rows="6" id="content" name="post_content">
 
 						</textarea>
 
 				</div>
 
 				<div class="form-group" style="float: right">
-						<button id="draft" class="btn btn-default">Save as Draft</button>
-						<button id="pubish" class="btn btn-primary">Publish</button>
+						<input type="submit" name="status" value="Save as Draft" id="draft" class="btn btn-default">
+						<input  type="submit" name="status" id="pubish" class="btn btn-primary" value="Publish">
 				</div>
+
 
 		</div>
 
@@ -89,11 +91,11 @@
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="category">Category</label>
 			</div>
-			<select class="custom-select" id="category">
+			<select name="category" class="custom-select" id="category">
 				<option selected value="c">C</option>
-				<option value="java">Java</option>
-				<option value="php">PHP</option>
-				<option value="python">Python</option>
+				<option  value="java">Java</option>
+				<option  value="php">PHP</option>
+				<option  value="python">Python</option>
 			</select>
 
 
@@ -103,7 +105,7 @@
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="category">Tags</label>
 			</div>
-			<select class="custom-select" id="category">
+			<select name="tag"class="custom-select" id="category">
 				<option selected value="c">C</option>
 				<option value="java">algorithm</option>
 				<option value="php">php</option>
@@ -114,9 +116,11 @@
 
 		<div class="form-group">
 				<label for="file" >Select a Featured Image</label>
-				<input type="file" id="file" class="form-control" onchange="readURL(this);">
+				<input name="featured_img" type="file" accept="image/*" id="file" class="form-control" onchange="readURL(this);">
 				<img id="featured_image" src="" alt="Featured Image">
 		</div>
+
+			</form>
 
 		</div>
 
@@ -167,7 +171,7 @@
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="category">Category</label>
 			</div>
-			<select class="custom-select" id="category">
+			<select name="category" class="custom-select" id="category">
 				<option selected value="{{post.category}}">{{post.category}}</option>
 				<option value="java">Java</option>
 				<option value="php">PHP</option>

@@ -35,8 +35,44 @@ def posts(request):
     return render(request, 'backend/posts.html', context=my_dict)
 
 def new_post(request):
+
+
     my_dict = {'new_post':'new_post'}
     return render(request, 'backend/posts.html', context=my_dict)
+
+def create_post(request):
+    if request.method == 'POST' :
+        post_title = request.POST.get('post_title')
+        post_content = request.POST.get('post_content')
+        featured_img = request.FILES.get('featured_img')
+        tag = request.POST.get('tag')
+        category = request.POST.get('category')
+        status = request.POST.get('status')
+        current_user = request.user
+        profile = UserProfileInfo.objects.get(user=current_user)
+
+    post = Post()
+    post.title = post_title
+    post.content = post_content
+    post.tag = tag
+    post.category = category
+    post.featured_img = featured_img
+    post.author = User.objects.get(id=current_user.id)
+
+    if status == "Save as Draft":
+        post.status = "drafted"
+    else:
+        post.status = "published"
+
+    post.created_date = datetime.now()
+    post.published_date = datetime.now()
+    post.updated_date = datetime.now()
+
+    post.save()
+
+    my_dict = {'new_post':'new_post'}
+    return render(request, 'backend/posts.html', context=my_dict)
+
 
 #Post edit page
 def edit_post(request, pk):
