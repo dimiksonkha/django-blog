@@ -6,6 +6,7 @@ app_name = 'backend'
 urlpatterns = [
     path('posts/', views.posts, name='posts'),
     path('new_post/', views.new_post, name='new_post'),
+    path('create_post/', views.create_post, name='create_post'),
     path('edit_post/<int:pk>/', views.edit_post, name='edit_post'),
     path('delete_post/<int:pk>/', views.delete_post, name='delete_post'),
     path('users/', views.users, name='users'),
