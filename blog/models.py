@@ -52,9 +52,13 @@ class Comment(models.Model):
     published_date = models.DateTimeField(null=True, blank=True)
     is_approved = models.BooleanField(default=False)
 
+
     def approve(self):
-        self.is_approved = true
+        self.is_approved = True
         self.save()
+
+    def move_to_trash(self):
+        self.delete()
 
     def get_absolute_url(self):
         return reverse('blog:post_details', args=(post_id, ))

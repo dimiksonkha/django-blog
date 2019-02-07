@@ -20,40 +20,45 @@
 						{% if comments %}
 							{% for comment in comments %}
 							<tr>
-								<th scope="row">1</th>
+								<th scope="row">{{forloop.counter }}</th>
 
 								<td style="width:400px;">
 										<p>{{ comment.content }}</p>
-										<a href="#" class="btn btn-success">View in the Post</a>
+										<a href="/blog/posts/{{comment.post.id}}" class="btn btn-success">View in the Post</a>
 
 								</td>
 								<td>{{ comment.author }}</td>
 								{% if comment.is_approved %}
 								<td>Approved</td>
 								<td>
-										<select class="custom-select" style="width:200px">
-												<option>
+										<form action="{% url 'backend:moderate_comment'%}" method="POST" >
+											{% csrf_token %}
+										<input type="hidden" name="comment_id" value="{{comment.id}}">
+										<select name="action" class="custom-select" style="width:200px">
+												<option value="trash">
 												Move to Trash
 												</option>
 										</select>
-										<button class="btn btn-dark">Apply</button>
+										<button type="submit" class="btn btn-dark">Apply</button>
+									</form>
 								</td>
 								{% else %}
 								<td>Awaiting for Moderation </td>
 								<td>
-										<select class="custom-select" style="width:200px">
-											<option>
-												Approve
-											</option>
+								<form action="{% url 'backend:moderate_comment'%}" method="POST" >
+									{% csrf_token %}
+									<input type="hidden" name="comment_id" value="{{comment.id}}">
+									<select name="action" class="custom-select" style="width:200px">
+										<option value="approve">
+											Approve
+										</option>
 
-												<option>
-												 Mark As Spam
-												</option>
-												<option>
-												Move to Trash
-												</option>
-										</select>
-										<button class="btn btn-dark">Apply</button>
+											<option value="trash">
+											Move to Trash
+											</option>
+									</select>
+									<button type="submit" class="btn btn-dark">Apply</button>
+								</form>
 								</td>
 								{% endif %}
 

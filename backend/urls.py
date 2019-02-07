@@ -12,6 +12,7 @@ urlpatterns = [
     path('delete_post/<int:pk>/', views.delete_post, name='delete_post'),
     path('users/', views.users, name='users'),
     path('comments/', views.comments, name='comments'),
+    path('moderate_comment/', views.moderate_comment, name='moderate_comment'),
     path('tags/', views.tags, name='tags'),
     path('categories/', views.categories, name='categories'),
     path('settings/', views.settings, name='settings'),

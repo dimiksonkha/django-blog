@@ -61,7 +61,7 @@ def create_post(request):
 
     if status == "Save as Draft":
         post.status = "drafted"
-        post.published_date = datetime.now() # Have to remove this line later 
+        post.published_date = datetime.now() # Have to remove this line later
     else:
         post.status = "published"
 
@@ -127,6 +127,20 @@ def comments(request):
     my_dict = {'comments':comments}
 
     return render(request, 'backend/comments.html', context=my_dict)
+
+def moderate_comment(request):
+    if request.method == 'POST':
+        comment_id = request.POST.get('comment_id')
+        comment = Comment.objects.get(id=comment_id)
+        action = request.POST.get('action')
+
+        if action == "approve":
+            comment.approve()
+            
+        elif action == "trash":
+            comment.move_to_trash()
+
+    return HttpResponseRedirect(reverse('backend:comments'))
 
 def users(request):
     users = UserProfileInfo.objects.all()

@@ -42,7 +42,7 @@ def post_details(request, pk):
         previous_post = None
 
     post_id = post.id
-    comments = post.comments.all()
+    comments = post.comments.filter(is_approved=True)
 
 
 
