@@ -188,5 +188,32 @@ def settings(request):
     return render(request, 'backend/settings.html')
 
 def profile(request):
+    profile = UserProfileInfo.objects.get(user=request.user)
+    my_dict = {'profile':profile}
+    return render(request, 'backend/profile.html', context=my_dict)
 
-    return render(request, 'backend/profile.html')
+def update_profile(request):
+
+    if request.method == "POST":
+        profile_id = request.POST.get('profile_id')
+        profile_pic = request.FILES.get('profile_pic')
+        username = request.POST.get('username')
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+    profile = UserProfileInfo.objects.get(id=profile_id)
+    profile.profile_pic = profile_pic
+    profile.save()
+
+    user = request.user
+    user.username = username
+    user.first_name = firstname
+    user.last_name = lastname
+    user.email = email
+    user.set_password(password)
+    user.save()
+
+
+    return HttpResponseRedirect(reverse('backend:profile'))

@@ -4,47 +4,49 @@
 <div class="col-md-4">
 
 		<div class="post">
-			<form method="post" action="process.html">
+			<form method="POST" action="{% url 'backend:update_profile'%}">
+				{% csrf_token %}
+				<input type="hidden" name="profile_id" value="{{profile.id}}">
 						<div class="form-group">
-								<img src="{% %}" alt="xHacker404" id="profile" width="200px;" height="200px;" >
+								<img src="/media/{{ profile.profile_pic }}" alt="xHacker404" id="profile" width="200px;" height="200px;" >
 								<input name="profile_pic" type="file" id="file" value="change picture" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
 						</div>
 
 
 				<div class="form-group">
 						<label for="name">Username:</label>
-						<input type="text" class="form-control" name="username" id="username" value="xHacker404">
+						<input type="text" class="form-control" name="username" id="username" value="{{profile.user.username}}">
 				</div>
 
 				<div class="form-group">
 						<label for="name">First Name:</label>
-						<input type="text" class="form-control" name="firstname" id="firstname" value="xHacker">
+						<input type="text" class="form-control" name="firstname" id="firstname" value="{{profile.user.first_name}}">
 				</div>
 
 				<div class="form-group">
 						<label for="name">Last Name:</label>
-						<input type="text" class="form-control" name="lastname" id="lastname" value="404">
+						<input type="text" class="form-control" name="lastname" id="lastname" value="{{profile.user.last_name}}">
 				</div>
 
 				<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="text" name="email" id="email" value="xHacker404@gmail.com" class="form-control">
+						<input type="text" name="email" id="email" value="{{profile.user.email}}" class="form-control">
 
 				</div>
 				<div class="form-group">
 						<label for="password">
 								Password:
 						</label>
-						<input type="password" id="password" class="form-control" value="12345687">
+						<input name="password" type="password" id="password" class="form-control" value="{{profile.user.password}}">
 				</div>
 				 <div class="form-group">
 						<label for="confirmPassword">
 								Confirm Password:
 						</label>
-						<input type="password" id="confirmPassword" class="form-control"  value="12345687">
+						<input name="confirm_password" type="password" id="confirmPassword" class="form-control"  value="{{profile.user.password}}">
 				</div>
 
-					<input type="submit" value="Save" class="btn btn-primary">
+					<input type="submit" value="Update" class="btn btn-primary">
 
 			</form>
 
