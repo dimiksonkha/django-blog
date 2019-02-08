@@ -136,11 +136,37 @@ def moderate_comment(request):
 
         if action == "approve":
             comment.approve()
-            
+
         elif action == "trash":
             comment.move_to_trash()
 
     return HttpResponseRedirect(reverse('backend:comments'))
+
+def moderate_user(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        user = User.objects.get(id=user_id)
+        action = request.POST.get('action')
+
+        if action == "admin":
+            user.is_superuser = True
+            user.save()
+
+        elif action == "moderator":
+            user.is_superuser = False
+            user.is_staff = True
+            user.save()
+
+
+        elif action == "author":
+            user.is_superuser = False
+            user.is_staff = False
+            user.save()
+
+        elif action == "delete":
+            user.delete()
+
+    return HttpResponseRedirect(reverse('backend:users'))
 
 def users(request):
     users = UserProfileInfo.objects.all()

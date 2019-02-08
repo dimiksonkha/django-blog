@@ -13,6 +13,7 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('comments/', views.comments, name='comments'),
     path('moderate_comment/', views.moderate_comment, name='moderate_comment'),
+    path('moderate_user/', views.moderate_user, name='moderate_user'),
     path('tags/', views.tags, name='tags'),
     path('categories/', views.categories, name='categories'),
     path('settings/', views.settings, name='settings'),

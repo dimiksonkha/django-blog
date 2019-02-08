@@ -28,36 +28,65 @@
             {% if profile.user.is_superuser %}
             <td>Admin</td>
             <td>
-                <select class="custom-select" style="width:200px">
-                  <option>
+              <form action="{% url 'backend:moderate_user'%}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{profile.user.id}}">
+                <select name="action" class="custom-select" style="width:200px">
+                  <option value="moderator">
                     Make Moderator
                   </option>
 
-                    <option>
+                    <option value="author">
                       Make Author
                     </option>
-                    <option>
+                    <option value="delete">
                     Remove User
                     </option>
                 </select>
-                <button class="btn btn-dark">Apply</button>
+              <button type="submit" class="btn btn-dark">Apply</a>
+                  </form>
             </td>
-            {% else %}
-            <td> Moderator </td>
+            {% elif profile.user.is_staff %}
+            <td>Moderator</td>
             <td>
-                <select class="custom-select" style="width:200px">
-                  <option>
+              <form action="{% url 'backend:moderate_user'%}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{profile.user.id}}">
+                <select name="action" class="custom-select" style="width:200px">
+                  <option value="admin">
                     Make Admin
                   </option>
 
-                    <option>
+                    <option value="author">
                       Make Author
                     </option>
-                    <option>
+                    <option value="delete">
                     Remove User
                     </option>
                 </select>
-                <button class="btn btn-dark">Apply</button>
+                <button type="submit" class="btn btn-dark">Apply</a>
+              </form>
+            </td>
+            {% else %}
+            <td> Author </td>
+            <td>
+              <form action="{% url 'backend:moderate_user'%}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{profile.user.id}}">
+                <select name="action" class="custom-select" style="width:200px">
+                  <option value="admin">
+                    Make Admin
+                  </option>
+
+                    <option value="moderator">
+                      Make Moderator
+                    </option>
+                    <option value="delete">
+                    Remove User
+                    </option>
+                </select>
+              <button type="submit" class="btn btn-dark">Apply</a>
+              </form>
             </td>
             {% endif %}
             <td></td>
