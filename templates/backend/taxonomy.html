@@ -8,8 +8,8 @@
 					 <div class="form-group">
 
 				<label for="new_tag">Add New {{taxonomy}}</label>
-				<input type="text" class="form-control" id="new_tag">
-
+				<input type="text" class="form-control"  name="text" id="new_tag">
+				<input type="text" class="form-control" name="slug" >
 				</div>
 				<button class="btn btn-primary">Add This {{taxonomy}} </button>
 
@@ -19,17 +19,20 @@
 		<div class="card-body">
 				{% if taxonomy == 'Category' %}
 				<h2 class="card-title" style="font-size:20px;">Available Categories:</h2>
+				<ul>
+						{% for category in categories %}
+						<li>{ {category.text }}</li>
+						{% endfor %}
+				</ul>
 				{% else %}
 				<h2 class="card-title" style="font-size:20px;">Available Tags:</h2>
-				{% endif %}
 				<ul>
-						<li>C</li>
-						<li>PHP</li>
-						<li>Java</li>
-						<li>Python</li>
-						<li>JavaScript</li>
-
+						{% for tag in tags %}
+						<li>{ {tag.text }}</li>
+						{% endfor %}
 				</ul>
+				{% endif %}
+
 
 		</div>
 
