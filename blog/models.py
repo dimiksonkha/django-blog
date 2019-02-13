@@ -15,10 +15,27 @@ class UserProfileInfo(models.Model):
 
 
 
+class Category(models.Model):
+    text = models.CharField(max_length=100, unique=True)
+    slug = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.text
+
+
+class Tag(models.Model):
+    text = models.CharField(max_length=100, unique=True)
+    slug = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.text
+        
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
     featured_img = models.ImageField(upload_to='featured_images', blank=True)
+    tag = models.ManyToManyField(Tag)
+    category = models.ManyToManyField(Category)
     status = models.CharField(max_length=100, default='drafted')
     author = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
     created_date = models.DateTimeField(default=datetime.now())
@@ -40,25 +57,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
-
-class Category(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE, default='uncategoried', related_name='categories')
-    text = models.CharField(max_length=100, unique=True)
-    slug = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.text
-
-
-class Tag(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE, default='uncategoried', related_name='categories')
-    text = models.CharField(max_length=100, unique=True)
-    slug = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.text
-        
 
 
 class Comment(models.Model):
