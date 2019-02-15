@@ -16,7 +16,9 @@ urlpatterns = [
     path('moderate_user/', views.moderate_user, name='moderate_user'),
     path('update/', views.update_profile, name='update_profile'),
     path('tags/', views.tags, name='tags'),
+    path('add_new_tag/', views.add_new_tag, name='add_new_tag'),
     path('categories/', views.categories, name='categories'),
+    path('add_new_category', views.add_new_category, name="add_new_category"),
     path('settings/', views.settings, name='settings'),
     path('profile/', views.profile, name='profile'),
 

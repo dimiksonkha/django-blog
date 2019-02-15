@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from blog.models import Post, Comment, Reply, UserProfileInfo
+from blog.models import Post, Comment, Reply, UserProfileInfo,Tag,Category
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
@@ -111,8 +111,11 @@ def update_post(request):
 #Post edit page
 def edit_post(request, pk):
     post = Post.objects.get(id=pk)
+    post_tags = post.tag.all()
+    other_tags = Category.objects.exclude(post__pk=8)
+    post_categories = post.category.all()
 
-    my_dict = {'post':post, 'edit_post':'edit_post'}
+    my_dict = {'post':post, 'edit_post':'edit_post', 'post_tags':post_tags, 'other_tags':other_tags, 'post_categories':post_categories}
     return render(request, 'backend/posts.html', context=my_dict)
 
 # Post Delete View
@@ -174,13 +177,41 @@ def users(request):
     return render(request, 'backend/users.html', context=my_dict)
 
 def tags(request):
-    my_dict = {'taxonomy':'Tag'}
+    tags = Tag.objects.all()
+    my_dict = {'taxonomy':'Tag','tags':tags }
 
     return render(request, 'backend/taxonomy.html', context=my_dict)
 
 def categories(request):
-    my_dict = {'taxonomy':'Category'}
+    categories = Category.objects.all()
+    my_dict = {'taxonomy':'category', 'categories':categories}
 
+    return render(request, 'backend/taxonomy.html', context=my_dict)
+
+def add_new_tag(request):
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        slug = request.POST.get('slug')
+    tag = Tag()
+    tag.text = text
+    tag.slug = slug
+    tag.save()
+
+    my_dict = {'taxonomy':'tag'}
+    return render(request, 'backend/taxonomy.html', context=my_dict)
+
+
+
+def add_new_category(request):
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        slug = request.POST.get('slug')
+    category = Category()
+    category.text = text
+    category.slug = slug
+    category.save()
+
+    my_dict = {'taxonomy':'category'}
     return render(request, 'backend/taxonomy.html', context=my_dict)
 
 def settings(request):

@@ -29,8 +29,24 @@
           {% endif %}
         </ul>
 
-        <p><b>Categories:</b><a href="/blog/category/{{ post.category }}" />{{ post.category.all }}</a></p> <br>
-        <p><b>Tags:</b><a href="/blog/tag/{{ post.tag }}" />{{ post.tag.all }}</a></p>
+        <p><b>Categories:</b>
+        {% for category in post_categories %}
+        {% if forloop.last %}
+        <a href="/blog/tag/{{ category.text }}" />{{ category.text }}</a>
+        {% else %}
+          <a href="/blog/tag/{{ category.text }}" />{{ category.text }}</a>,
+        {% endif %}
+        {% endfor %}
+        </p>
+        <p><b>Tags:</b>
+        {% for tag in post_tags %}
+        {% if forloop.last %}
+        <a href="/blog/tag/{{ tag.text }}" />{{ tag.text }}</a>
+        {% else %}
+          <a href="/blog/tag/{{ tag.text }}" />{{ tag.text }}</a>,
+        {% endif %}
+        {% endfor %}
+        </p>
 
 
 

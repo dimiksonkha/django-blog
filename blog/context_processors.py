@@ -1,4 +1,4 @@
-from blog.models import Post, UserProfileInfo
+from blog.models import Post, UserProfileInfo,Tag,Category
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -6,23 +6,15 @@ from django.contrib.auth.decorators import login_required
 def post_widget(request):
     all_posts = Post.objects.filter(status='published').order_by('published_date')
     years = []
-    tags = []
-    categories = []
+    tags = Tag.objects.all()
+    categories = Category.objects.all()
 
     for post in all_posts :
         year = post.published_date.year
-        tag = post.tag
-        category = post.category
-
 
         if year not in years:
             years.append(year)
 
-        if tag not in tags:
-            tags.append(tag)
-
-        if category not in categories:
-            categories.append(category)
 
     return {
     'all_posts':all_posts,

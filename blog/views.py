@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from blog.models import Post, Comment, Reply, UserProfileInfo
+from blog.models import Post, Comment, Reply, UserProfileInfo,Tag,Category
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from . import forms
 from django.core.paginator import Paginator
@@ -28,6 +28,8 @@ def index(request):
 #Post details page
 def post_details(request, pk):
     post = Post.objects.get(id=pk)
+    post_tags = post.tag.all()
+    post_categories = post.category.all()
 
     next_posts = Post.objects.filter(published_date__gt=post.published_date)
     if(next_posts):
@@ -46,7 +48,7 @@ def post_details(request, pk):
 
 
 
-    my_dict = {'post':post, 'comments':comments, 'next_post':next_post, 'previous_post':previous_post}
+    my_dict = {'post_tags':post_tags,'post_categories':post_categories, 'post':post, 'comments':comments, 'next_post':next_post, 'previous_post':previous_post}
     return render(request, 'blog/single.html', context=my_dict)
 
 #All posts by published year
@@ -61,7 +63,8 @@ def archeive_posts(request, year):
 
 #All posts by post tag
 def archeive_posts_by_tag(request, tag):
-    post_list = Post.objects.filter(tag=tag)
+    tag = Tag.objects.get(text=tag)
+    post_list = tag.post_set.all()
 
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
@@ -72,8 +75,8 @@ def archeive_posts_by_tag(request, tag):
 
 #All posts by post category
 def archeive_posts_by_category(request, category):
-    post_list = Post.objects.filter(category=category)
-
+    category = Category.objects.get(text=category)
+    post_list = category.post_set.all()
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)

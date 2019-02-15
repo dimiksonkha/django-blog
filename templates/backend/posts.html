@@ -172,16 +172,28 @@
 
 				<h2 style="font-size: 20px">Post Options:</h2>
 
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="category">Category</label>
-			</div>
-			<select name="category" class="custom-select" id="category">
-				<option selected value="{{post.category}}">{{post.category}}</option>
-				<option value="java">Java</option>
-				<option value="php">PHP</option>
-				<option value="python">Python</option>
-			</select>
+
+				<h5>Categories:</h5>
+				{% for category in post_categories %}
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="{{category.text}}" id="defaultCheck1" checked>
+					<label class="form-check-label" for="defaultCheck1">
+						{{category.text}}
+					</label>
+				</div>
+				{% endfor %}
+				{% for tag in other_tags %}
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" value="{{tag.text}}" id="defaultCheck1">
+					<label class="form-check-label" for="defaultCheck1">
+						{{tag.text}}
+					</label>
+				</div>
+				{% endfor %}
+
+
+
+
 
 
 		</div>

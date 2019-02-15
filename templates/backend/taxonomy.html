@@ -5,30 +5,36 @@
 
 
 		<div class="post">
-					 <div class="form-group">
-
-				<label for="new_tag">Add New {{taxonomy}}</label>
-				<input type="text" class="form-control"  name="text" id="new_tag">
-				<input type="text" class="form-control" name="slug" >
+			 <div class="form-group">
+				 {% if taxonomy == 'category' %}
+				 <form action="{% url 'backend:add_new_category' %}" method="POST" >
+				 {% else %}
+				 <form action="{% url 'backend:add_new_tag' %}" method="POST" >
+				 {% endif %}
+					 {% csrf_token %}
+					<label for="new_tag">Add New {{taxonomy}}</label>
+					<input type="text" class="form-control"  name="text" id="new_tag">
+					<input type="text" class="form-control" name="slug" >
 				</div>
-				<button class="btn btn-primary">Add This {{taxonomy}} </button>
+				<button type="submit" class="btn btn-primary">Add This {{taxonomy}} </button>
+			</form>
 
 
 		<div class="card" style="margin-top: 44px;">
 		</div>
 		<div class="card-body">
-				{% if taxonomy == 'Category' %}
+				{% if taxonomy == 'category' %}
 				<h2 class="card-title" style="font-size:20px;">Available Categories:</h2>
 				<ul>
 						{% for category in categories %}
-						<li>{ {category.text }}</li>
+						<li>{{category.text }}</li>
 						{% endfor %}
 				</ul>
 				{% else %}
 				<h2 class="card-title" style="font-size:20px;">Available Tags:</h2>
 				<ul>
 						{% for tag in tags %}
-						<li>{ {tag.text }}</li>
+						<li>{{ tag.text }}</li>
 						{% endfor %}
 				</ul>
 				{% endif %}
