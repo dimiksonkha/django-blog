@@ -20,6 +20,7 @@ urlpatterns = [
     path('categories/', views.categories, name='categories'),
     path('add_new_category', views.add_new_category, name="add_new_category"),
     path('settings/', views.settings, name='settings'),
+    path('update_settings/', views.update_settings, name='update_settings'),
     path('profile/', views.profile, name='profile'),
 
 ]

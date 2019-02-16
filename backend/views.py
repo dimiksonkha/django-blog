@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blog.models import Post, Comment, Reply, UserProfileInfo,Tag,Category
+from .models import BlogSettings
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
@@ -216,7 +217,36 @@ def add_new_category(request):
 
 def settings(request):
 
-    return render(request, 'backend/settings.html')
+    settings = BlogSettings.objects.get(id=1)
+    my_dict = {'settings':settings}
+    return render(request, 'backend/settings.html', context=my_dict)
+
+
+
+def update_settings(request):
+    if request.method == "POST":
+        icon = request.FILES.get('icon')
+        logo = request.FILES.get('logo')
+        title = request.POST.get('title')
+        tagline = request.POST.get('tagline')
+        keywords = request.POST.get('keywords')
+        description = request.POST.get('description')
+        post_per_page = request.POST.get('post_per_page')
+
+
+
+    settings = BlogSettings.objects.get(id=1)
+
+    settings.site_icon = icon
+    settings.site_logo = logo
+    settings.site_title = title
+    settings.tagline = tagline
+    settings.keywords = keywords
+    settings.description = description
+    settings.post_per_page = post_per_page
+    settings.save()
+
+    return HttpResponseRedirect(reverse('backend:settings'))
 
 def profile(request):
     profile = UserProfileInfo.objects.get(user=request.user)

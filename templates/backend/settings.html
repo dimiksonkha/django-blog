@@ -4,45 +4,45 @@
 <div class="col-md-4">
 
 		<div class="post">
-			<form method="post" action="{% url 'backend:settings'%}">
+			<form method="post" action="{% url 'backend:update_settings'%}">
 				{% csrf_token %}
 						<div class="form-group">
-								<img src="images/me.jpg" alt="Icon" id="icon" width="200px;" height="200px;" >
-								<input type="file" id="file" value="change blog icon" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
+								<img src="/media/{{settings.site_icon}}" alt="Icon" id="icon" width="50px;" height="50px;" >
+								<input type="file" name="icon" id="icon" value="/media/{{settings.site_icon}}" accept="image/*" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
 						</div>
 						<div class="form-group">
-								<img src="images/me.jpg" alt="Logo" id="logo" width="200px;" height="200px;" >
-								<input type="file" id="file" value="change blog logo" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
+								<img src="/media/{{settings.site_logo}}" alt="Logo" id="logo" width="50px;" height="50px;" >
+								<input  type="file" name="logo" id="logo"  value="/media/{{settings.site_logo}}" accept="image/*" onchange="readURL(this);" class="form-control" style="width:200px; margin-top:11px;">
 						</div>
 
 
 				<div class="form-group">
 						<label for="name">Blog Title:</label>
-						<input type="text" class="form-control" name="title" id="title" value="Django Blog">
+						<input type="text" class="form-control" name="title" id="title" value="{{settings.site_title}}">
 				</div>
 
 				<div class="form-group">
 						<label for="name">Blog Tagline:</label>
-						<input type="text" class="form-control" name="tagline" id="tagline" value="Just another DjangoBlog site">
+						<input type="text" class="form-control" name="tagline" id="tagline" value="{{settings.tagline}}">
 				</div>
 
 				<div class="form-group">
 						<label for="name">Meta:Keywords</label>
-						<input type="text" class="form-control" name="tagline" id="Keywords" value="python, django, blog">
+						<input type="text" class="form-control" name="keywords" id="Keywords" value="{{settings.keywords}}">
 				</div>
 				<div class="form-group">
 						<label for="name">Meta:Description</label>
-						<input type="text" class="form-control" name="tagline" id="description" value="This is blog site for python related topcis">
+						<input type="text" class="form-control" name="description" id="description" value="{{settings.description}}">
 				</div>
 
 				<div class="form-group">
 						<label for="name">Post per page</label>
-						<input type="number" class="form-control" name="tagline" id="post_per_page" value="5">
+						<input type="number" class="form-control" name="post_per_page" id="post_per_page" value="{{settings.post_per_page}}">
 				</div>
 
 
 
-					<input type="submit" value="Save" class="btn btn-primary">
+					<input type="submit" value="Update" class="btn btn-primary">
 
 			</form>
 
