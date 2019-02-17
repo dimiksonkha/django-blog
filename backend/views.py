@@ -36,9 +36,11 @@ def posts(request):
     return render(request, 'backend/posts.html', context=my_dict)
 
 def new_post(request):
+    tags = Tag.objects.all()
+    categories = Category.objects.all()
 
 
-    my_dict = {'new_post':'new_post'}
+    my_dict = {'new_post':'new_post', 'tags':tags, 'categories':categories }
     return render(request, 'backend/posts.html', context=my_dict)
 
 def create_post(request):
@@ -46,8 +48,8 @@ def create_post(request):
         post_title = request.POST.get('post_title')
         post_content = request.POST.get('post_content')
         featured_img = request.FILES.get('featured_img')
-        tag = request.POST.get('tag')
-        category = request.POST.get('category')
+        categories = request.POST.getlist('category')
+        tags = request.POST.getlist('tag')
         status = request.POST.get('status')
         current_user = request.user
         profile = UserProfileInfo.objects.get(user=current_user)
@@ -55,22 +57,32 @@ def create_post(request):
     post = Post()
     post.title = post_title
     post.content = post_content
-    post.tag = tag
-    post.category = category
     post.featured_img = featured_img
     post.author = User.objects.get(id=current_user.id)
 
     if status == "Save as Draft":
         post.status = "drafted"
-        post.published_date = datetime.now() # Have to remove this line later
+
     else:
         post.status = "published"
+        post.published_date = datetime.now()
 
 
     post.created_date = datetime.now()
     post.updated_date = datetime.now()
 
     post.save()
+    
+    existing_post = Post.objects.get(id=post.id)
+    for tag in tags:
+        real_tag = Tag.objects.get(text=tag)
+        existing_post.tag.add(real_tag)
+
+    for category in categories:
+        real_cat = Category.objects.get(text=category)
+        existing_post.category.add(real_cat)
+
+    existing_post.save()
 
     my_dict = {'new_post':'new_post'}
     return render(request, 'backend/posts.html', context=my_dict)
@@ -81,8 +93,11 @@ def update_post(request):
         post_title = request.POST.get('post_title')
         post_content = request.POST.get('post_content')
         featured_img = request.FILES.get('featured_img')
-        tag = request.POST.get('tag')
-        category = request.POST.get('category')
+
+        categories = request.POST.getlist('category')
+        tags = request.POST.getlist('tag')
+
+
         status = request.POST.get('status')
         current_user = request.user
         profile = UserProfileInfo.objects.get(user=current_user)
@@ -90,8 +105,16 @@ def update_post(request):
     post = Post.objects.get(id=post_id)
     post.title = post_title
     post.content = post_content
-    post.tag = tag
-    post.category = category
+
+
+    for tag in tags:
+        real_tag = Tag.objects.get(text=tag)
+        post.tag.add(real_tag)
+
+    for category in categories:
+        real_cat = Category.objects.get(text=category)
+        post.category.add(real_cat)
+
     post.featured_img = featured_img
     post.author = User.objects.get(id=current_user.id)
 
@@ -113,10 +136,12 @@ def update_post(request):
 def edit_post(request, pk):
     post = Post.objects.get(id=pk)
     post_tags = post.tag.all()
-    other_tags = Category.objects.exclude(post__pk=8)
+    other_tags = Tag.objects.all().exclude(tags__pk=pk)
     post_categories = post.category.all()
+    other_categories = Category.objects.all().exclude(categories__pk=pk)
 
-    my_dict = {'post':post, 'edit_post':'edit_post', 'post_tags':post_tags, 'other_tags':other_tags, 'post_categories':post_categories}
+    my_dict = {'post':post, 'edit_post':'edit_post', 'post_tags':post_tags, 'post_categories':post_categories,'other_tags':other_tags,'other_categories':other_categories}
+
     return render(request, 'backend/posts.html', context=my_dict)
 
 # Post Delete View

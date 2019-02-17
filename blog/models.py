@@ -29,13 +29,13 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.text
-        
+
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)
     featured_img = models.ImageField(upload_to='featured_images', blank=True)
-    tag = models.ManyToManyField(Tag)
-    category = models.ManyToManyField(Category)
+    tag = models.ManyToManyField(Tag, related_name='tags')
+    category = models.ManyToManyField(Category, related_name='categories')
     status = models.CharField(max_length=100, default='drafted')
     author = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
     created_date = models.DateTimeField(default=datetime.now())

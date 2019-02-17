@@ -85,34 +85,27 @@
 
 		<div class="post-option">
 
-				<h2 style="font-size: 20px">Post Options:</h2>
+			<h2 style="font-size: 20px">Post Options:</h2>
 
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="category">Category</label>
+
+			<h5>Categories:</h5>
+			{% for category in categories %}
+			<div class="form-check">
+				<input name="category" class="form-check-input" type="checkbox" value="{{category.text}}" id="defaultCheck1">
+				<label class="form-check-label" for="defaultCheck1">
+					{{category.text}}
+				</label>
 			</div>
-			<select name="category" class="custom-select" id="category">
-				<option selected value="c">C</option>
-				<option  value="java">Java</option>
-				<option  value="php">PHP</option>
-				<option  value="python">Python</option>
-			</select>
-
-
-		</div>
-
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="category">Tags</label>
+			{% endfor %}
+			<h5>Tags:</h5>
+			{% for tag in tags %}
+			<div class="form-check">
+				<input name="tag" class="form-check-input" type="checkbox" value="{{tag.text}}" id="defaultCheck1" >
+				<label class="form-check-label" for="defaultCheck1">
+					{{tag.text}}
+				</label>
 			</div>
-			<select name="tag"class="custom-select" id="category">
-				<option selected value="c">C</option>
-				<option value="java">algorithm</option>
-				<option value="php">php</option>
-				<option value="python">data structure</option>
-				<option value="python">content programming</option>
-			</select>
-		</div>
+			{% endfor %}
 
 		<div class="form-group">
 				<label for="file" >Select a Featured Image</label>
@@ -176,15 +169,33 @@
 				<h5>Categories:</h5>
 				{% for category in post_categories %}
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{category.text}}" id="defaultCheck1" checked>
+					<input name="category" class="form-check-input" type="checkbox" value="{{category.text}}" id="defaultCheck1" checked>
 					<label class="form-check-label" for="defaultCheck1">
 						{{category.text}}
 					</label>
 				</div>
 				{% endfor %}
+				{% for category in other_categories %}
+				<div class="form-check">
+					<input name="category" class="form-check-input" type="checkbox" value="{{category.text}}" id="defaultCheck1">
+					<label class="form-check-label" for="defaultCheck1">
+						{{category.text}}
+					</label>
+				</div>
+				{% endfor %}
+
+				<h5>Tags:</h5>
+				{% for tag in post_tags %}
+				<div class="form-check">
+					<input name="tag" class="form-check-input" type="checkbox" value="{{tag.text}}" id="defaultCheck1" checked>
+					<label class="form-check-label" for="defaultCheck1">
+						{{tag.text}}
+					</label>
+				</div>
+				{% endfor %}
 				{% for tag in other_tags %}
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{tag.text}}" id="defaultCheck1">
+					<input name="tag" class="form-check-input" type="checkbox" value="{{tag.text}}" id="defaultCheck1" >
 					<label class="form-check-label" for="defaultCheck1">
 						{{tag.text}}
 					</label>
@@ -192,23 +203,6 @@
 				{% endfor %}
 
 
-
-
-
-
-		</div>
-
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<label class="input-group-text" for="category">Tags</label>
-			</div>
-			<select name="tag" class="custom-select" id="category">
-				<option selected value="{{post.tag}}">{{post.tag}}</option>
-				<option value="java">algorithm</option>
-				<option value="php">php</option>
-				<option value="python">data structure</option>
-				<option value="python">content programming</option>
-			</select>
 		</div>
 
 		<div class="form-group">
