@@ -5,7 +5,7 @@
 <ul>
  <li> <strong> Project Name:</strong> Django Blog </li>
  <li> <strong> Description:</strong> Simple blog app using Django</li>
- <li> <strong> Version:</strong> v1.0.1</li>
+ <li> <strong> Version:</strong> v1.0.2</li>
  <li> <strong> Author:</strong> xHacker404 </li>
  <li> <strong> Demo:</strong> <a href="http://xhacker404.pythonanywhere.com/" target="_self">DjangoBlog </a></li> 
 </ul>
