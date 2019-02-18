@@ -111,8 +111,9 @@ def archeive_posts_by_date(request, year, month, day):
 def search_view(request):
         if request.method == 'GET' :
             search_query = request.GET.get('search_box')
-            post_list = Post.objects.filter(title__contains=search_query ) | Post.objects.filter(content__contains=search_query )
-            # | Category.objects.filter(text__contains=search_query ) | Tag.objects.filter(text__contains=search_query ) 
+            tag_list = Tag.objects.filter(text__contains=search_query)
+            cat_list = Category.objects.filter(text__contains=search_query)
+            post_list = Post.objects.filter(title__contains=search_query ).distinct() | Post.objects.filter(content__contains=search_query ).distinct() | Post.objects.filter(tag__id__in=tag_list).distinct() | Post.objects.filter(category__id__in=cat_list).distinct()
 
         paginator = Paginator(post_list, 5) # Show 5 posts per page
         page = request.GET.get('page')

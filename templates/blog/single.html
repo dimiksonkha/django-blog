@@ -32,9 +32,9 @@
         <p><b>Categories:</b>
         {% for category in post_categories %}
         {% if forloop.last %}
-        <a href="/blog/tag/{{ category.text }}" />{{ category.text }}</a>
+        <a href="/blog/category/{{ category.text }}" />{{ category.text }}</a>
         {% else %}
-          <a href="/blog/tag/{{ category.text }}" />{{ category.text }}</a>,
+          <a href="/blog/category/{{ category.text }}" />{{ category.text }}</a>,
         {% endif %}
         {% endfor %}
         </p>
