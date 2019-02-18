@@ -72,7 +72,7 @@ def create_post(request):
     post.updated_date = datetime.now()
 
     post.save()
-    
+
     existing_post = Post.objects.get(id=post.id)
     for tag in tags:
         real_tag = Tag.objects.get(text=tag)
@@ -262,8 +262,11 @@ def update_settings(request):
 
     settings = BlogSettings.objects.get(id=1)
 
-    settings.site_icon = icon
-    settings.site_logo = logo
+    if icon:
+        settings.site_icon = icon
+    if logo:
+        settings.site_logo = logo
+
     settings.site_title = title
     settings.tagline = tagline
     settings.keywords = keywords
@@ -290,7 +293,9 @@ def update_profile(request):
         password = request.POST.get('password')
 
     profile = UserProfileInfo.objects.get(id=profile_id)
-    profile.profile_pic = pic
+    if pic:
+        profile.profile_pic = pic
+
     profile.save()
 
     user = request.user

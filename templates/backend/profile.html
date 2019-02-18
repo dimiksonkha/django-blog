@@ -4,7 +4,7 @@
 <div class="col-md-4">
 
 		<div class="post">
-			<form method="POST" action="{% url 'backend:update_profile'%}">
+			<form method="POST" action="{% url 'backend:update_profile'%}" enctype="multipart/form-data">
 				{% csrf_token %}
 				<input type="hidden" name="profile_id" value="{{profile.id}}">
 						<div class="form-group">
