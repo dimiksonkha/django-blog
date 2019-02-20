@@ -1,7 +1,7 @@
 from django import forms
 from django.core import validators
 from django.contrib.auth.models import User
-from blog.models import UserProfileInfo
+from accounts.models import UserProfileInfo
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

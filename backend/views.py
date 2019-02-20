@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from blog.models import Post, Comment, Reply, UserProfileInfo,Tag,Category
+from blog.models import Post,Tag,Category
+from accounts.models import UserProfileInfo
+from comments.models import Comment,Reply
 from .models import BlogSettings
 from blog.forms import UserForm,UserProfileInfoForm, PostForm
 from django.core.paginator import Paginator

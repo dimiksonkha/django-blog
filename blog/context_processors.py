@@ -1,4 +1,5 @@
-from blog.models import Post, UserProfileInfo,Tag,Category
+from blog.models import Post,Tag,Category
+from accounts.models import UserProfileInfo
 from backend.models import BlogSettings
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
