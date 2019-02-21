@@ -30,7 +30,7 @@ def index(request):
 def posts(request):
     post_list = Post.objects.order_by('published_date')
 
-    paginator = Paginator(post_list, 5) # Show 5 posts per page
+    paginator = Paginator(post_list, 10) # Show 5 posts per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 

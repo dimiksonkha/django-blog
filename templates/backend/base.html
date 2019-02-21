@@ -15,6 +15,7 @@
 	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
 	<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-classic.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
     <style type="text/css">
         a.btn{
@@ -28,7 +29,8 @@
 
         <div class="col-md-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="{% url 'index' %}">Dashboard</a>
+              <a class="navbar-brand">Dashboard</a>
+							<a target="_blank" href="{% url 'index' %}">View Site</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -91,9 +93,12 @@
     </div>
     </div>
 
+
 <script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/jquery-ui.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <script src="{% static "js/script.js" %}"></script>
 <script type="text/javascript">
 	// //$("a.list-group-item").addClass('active');
@@ -102,6 +107,12 @@
 	// 	$(target).toggleClass('btn');
 	//
 	// });
+
+	$('#summernote').summernote({
+	        placeholder: 'Hello bootstrap 4',
+	        tabsize: 2,
+	        height: 100
+	      });
 
 	function readURL(input) {
 			if (input.files && input.files[0]) {
@@ -114,6 +125,10 @@
 					reader.readAsDataURL(input.files[0]);
 			}
 	}
+
+
+
+
 </script>
 </body>
 </html>
