@@ -13,7 +13,7 @@
 	        </ul>
 	        <hr>
 					<img src="/media/{{post.featured_img}}" alt="{{post.title}}" width="600px" height="400px" align="center"/></br>
-	        <p>{{post.content}}</p>
+	        <p>{{post.content | safe }}</p>
 
 	        <button class="btn"><a href="/blog/posts/{{post.id}}">Read More</a></button>
 

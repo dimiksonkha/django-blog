@@ -73,13 +73,13 @@
 					{% csrf_token %}
 				<div class="form-group">
 
-						<label for="post-title">Post Title:</label>
+						<label for="post-title">Title:</label>
 						<input type="text" id="post-title" class="form-control" name="post_title" value="">
 
 				</div>
 
 				<div class="form-group">
-						<label for="summernote">Post Content:</label>
+						<label for="summernote">Content:</label>
 						<textarea class="form-control" rows="6" id="summernote" name="post_content">
 
 						</textarea>
@@ -146,13 +146,13 @@
 
 					<div class="form-group">
 							<input type="hidden" name="post_id" value="{{post.id}}" >
-							<label for="post-title">Post Title:</label>
+							<label for="post-title">Title:</label>
 							<input type="text" name="post_title" id="post-title" class="form-control" value="{{post.title}}">
 
 					</div>
 
 					<div class="form-group">
-							<label for="content">Post Content:</label>
+							<label for="content">Content:</label>
 							<textarea name="post_content" class="form-control" id="summernote" rows="6">
 								{{post.content}}
 							</textarea>
