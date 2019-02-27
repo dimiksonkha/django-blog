@@ -3,7 +3,7 @@
 <html lang="us">
 <head>
 	<meta charset="utf-8">
-	<title>Shifan's Blog</title>
+	<title>{{site_title}}</title>
 	<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
 	<link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -45,10 +45,7 @@
                     <a class="nav-link " href="#">Contact</a>
                   </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                  <a class="nav-link btn btn-outline-primary" href="{% url 'blog:user_login' %}" >Login</a>
-                  <a class="nav-link btn btn-outline-success" href="{% url 'blog:sign-up'%}" style="margin-left: 10px">Sign Up</a>
-                </form>
+
               </div>
          </nav>
 
@@ -67,6 +64,9 @@
 								{{ user_form.as_p }}
 								{{ profile_form.as_p }}
 								<input type="submit" class="btn btn-primary" value="Register">
+								<br>
+								Already have an account?
+								<a class="btn btn-outline-primary" href="{% url 'blog:user_login' %}" >Login</a>
 
 						 </form>
 						{% endif %}

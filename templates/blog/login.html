@@ -3,7 +3,7 @@
 <html lang="us">
 <head>
 	<meta charset="utf-8">
-	<title>xCodes's Blog</title>
+	<title>{{site_title}}</title>
 	<link href="{% static "css/bootstrap.min.css" %}"rel="stylesheet" type="text/css">
 	<link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,7 +23,7 @@
         <div class="col-md-4 centered">
 
             <form action="{% url 'blog:user_login' %}", method="POST">
-								{% csrf_token %} 
+								{% csrf_token %}
               <div class="form-group">
                 <label for="username">User Name</label>
                 <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
@@ -37,6 +37,9 @@
                 <label class="form-check-label" for="exampleCheck1">Stay Logged in</label>
               </div>
               <button type="submit" class="btn btn-primary">Login</button>
+							<br>
+							New here?
+							<a class="btn btn-outline-success" href="{% url 'blog:sign-up'%}" style="margin-left: 10px">Create an account</a>
             </form>
 
         </div>
