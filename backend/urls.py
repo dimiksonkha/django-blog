@@ -5,6 +5,7 @@ from backend import views
 app_name = 'backend'
 urlpatterns = [
     path('posts/', views.posts, name='posts'),
+    path('posts_by_author/', views.posts_by_author, name='posts_by_author'),
     path('new_post/', views.new_post, name='new_post'),
     path('create_post/', views.create_post, name='create_post'),
     path('update_post/', views.update_post, name='update_post'),

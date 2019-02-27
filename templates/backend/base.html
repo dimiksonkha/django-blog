@@ -43,9 +43,9 @@
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                  <img src="images/me.jpg" width="50px;" height="50px;" class="profile-icon">
-                  <a class="nav-link">xHacker404</a>
-                  <a class="nav-link btn btn-secondary" href="index.html" style="margin-left: 10px">Log Out</a>
+                  <img src="/media/{{profile_pic}}" width="50px;" height="50px;" class="profile-icon">
+									<h2 style="font-size:24px; padding-left:10px; padding-right:10px"> Hello {{user.username }} </h2>
+									<a class="nav-link btn btn-primary" href="{% url 'blog:logout' %}" >Logout</a>
                 </form>
               </div>
          </nav>
@@ -60,13 +60,29 @@
 
                 <div class="list-group">
 
-                    <a href="{% url 'backend:posts'%}" class="list-group-item active">Posts</a>
+                    {% if user.is_staff and user.is_superuser %}
+										<a href="{% url 'backend:posts'%}" class="list-group-item active">Posts</a>
                     <a href="{% url 'backend:users'%}" class="list-group-item ">Users</a>
                     <a href="{% url 'backend:comments'%}" class="list-group-item ">Comments</a>
                     <a href="{% url 'backend:categories'%}" class="list-group-item ">Categories</a>
                     <a href="{% url 'backend:tags'%}" class="list-group-item ">Tags</a>
 										<a href="{% url 'backend:settings'%}" class="list-group-item ">Settings</a>
                     <a href="{% url 'backend:profile'%}" class="list-group-item ">Profile</a>
+
+										{% elif user.is_staff %}
+										<a href="{% url 'backend:posts'%}" class="list-group-item active">Posts</a>
+										<a href="{% url 'backend:comments'%}" class="list-group-item ">Comments</a>
+										<a href="{% url 'backend:categories'%}" class="list-group-item ">Categories</a>
+										<a href="{% url 'backend:tags'%}" class="list-group-item ">Tags</a>
+										<a href="{% url 'backend:settings'%}" class="list-group-item ">Settings</a>
+										<a href="{% url 'backend:profile'%}" class="list-group-item ">Profile</a>
+
+										{% elif user.is_authenticated %}
+										<a href="{% url 'backend:posts_by_author'%}" class="list-group-item active">Posts</a>
+                    <a href="{% url 'backend:categories'%}" class="list-group-item ">Categories</a>
+                    <a href="{% url 'backend:tags'%}" class="list-group-item ">Tags</a>
+                    <a href="{% url 'backend:profile'%}" class="list-group-item ">Profile</a>
+										{% endif %}
 
 
                 </div>

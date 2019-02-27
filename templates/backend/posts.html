@@ -64,6 +64,67 @@
 
 		</div>
 </div>
+{% elif post_page_by_author %}
+<div class="col-md-10" >
+
+
+		<div class="post" style="height:500px; overflow: scroll">
+			<div class="" style="float:right; margin-bottom:10px">
+				<a href="{% url 'backend:new_post'%}"class="btn btn-primary"> + New Post </a>
+			</div>
+
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Post Title</th>
+							<th scope="col">Date Modified</th>
+							<th scope="col">Status</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if posts %}
+							{% for post in posts %}
+							<tr>
+								<th scope="row">{{ forloop.counter }}</th>
+								<td> <a href="/blog/posts/{{post.id}}"> {{ post.title}} </a></td>
+								<td>{{post.updated_date.year}}/{{post.updated_date.month}}/{{post.updated_date.day}}</td>
+								<td>{{post.status}}</td>
+								<td>
+										<a href="/backend/edit_post/{{post.id}}" class="btn btn-success">edit</a>
+										<a href="/backend/delete_post/{{post.id}}" class="btn btn-danger">delete</a>
+
+								</td>
+								<td></td>
+							</tr>
+							{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+				<div class="pagination">
+				<span class="step-links">
+						{% if posts.has_previous %}
+								<a href="?page=1">&laquo; first</a>
+								<a href="?page={{ posts.previous_page_number }}">previous</a>
+						{% endif %}
+
+						<span class="current">
+								Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+						</span>
+
+						{% if posts.has_next %}
+								<a href="?page={{ posts.next_page_number }}">next</a>
+								<a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+						{% endif %}
+				</span>
+			</div>
+
+
+
+		</div>
+</div>
 {% elif new_post %}
 <div class="col-md-6">
 

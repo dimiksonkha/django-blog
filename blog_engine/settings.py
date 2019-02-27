@@ -72,7 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'blog.context_processors.post_widget',
                 'blog.context_processors.site_settings',
-                # 'blog.context_processors.user_profile_info',
+                'blog.context_processors.user_profile_info',
             ],
         },
     },

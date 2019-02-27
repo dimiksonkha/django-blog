@@ -185,11 +185,15 @@ def user_login(request):
         user = authenticate(username=username, password=password)
 
         if user:
-            if user.is_active:
+            if user.is_active and ( user.is_superuser or user.is_staff):
+                login(request, user)
+                return HttpResponseRedirect(reverse('backend:posts'))
+            elif user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('index'))
             else:
-                return HttpResponse("User is not active")
+                return HttpResponse("User is not active.Please Contact  to Admin")
+
         else:
             print('Someone tried to login and failed!')
             print('User Name {} and Password {}'.format(username, password))

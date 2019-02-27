@@ -47,14 +47,15 @@ def site_settings(request):
     }
 
 
-# @login_required
-# def user_profile_info(request):
+#@login_required
+def user_profile_info(request):
+    profile_pic = "" 
+    if request.method == 'GET':
+        if(request.user.is_authenticated):
+            current_user = request.user
+            logged_in_user = UserProfileInfo.objects.get(user=current_user)
+            profile_pic = logged_in_user.profile_pic
 
-    # if request.method == 'GET':
-    #     current_user = request.user
-    #
-    # logged_in_user = UserProfileInfo.objects.get(user=current_user)
-    # profile_pic = logged_in_user.profile_pic
-    # return{
-    # 'profile_pic':profile_pic
-    # }
+    return{
+    'profile_pic':profile_pic
+    }
