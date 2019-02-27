@@ -60,7 +60,7 @@
 
 									<img src="/media/{{profile_pic}}" width="50px;" height="50px;" class="profile-icon">
 									<h2 style="font-size:24px; padding-left:10px; padding-right:10px"> Hello {{user.username }} </h2>
-									<a class="nav-link btn btn-primary" href="{% url 'blog:logout' %}" >Logout</a>
+									<a class="nav-link btn btn-outline-primary" href="{% url 'blog:logout' %}" >Logout</a>
 									{% else %}
 									<a class="nav-link btn btn-outline-primary" href="{% url 'blog:user_login' %}" >Login</a>
                   <a class="nav-link btn btn-outline-success" href="{% url 'blog:sign-up'%}" style="margin-left: 10px">Sign Up</a>

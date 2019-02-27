@@ -4,6 +4,7 @@ from datetime import datetime
 
 # Create your models here.
 
+# Post Taxonomy:Category
 class Category(models.Model):
     text = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, unique=True)
@@ -11,7 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.text
 
-
+# Post Taxonomy:Tag
 class Tag(models.Model):
     text = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, unique=True)
@@ -19,6 +20,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.text
 
+# Blog Post 
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)

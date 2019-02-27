@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 #Populating dictionary for all_posts, tags, categories, post years
+#Will be used in blog sidebar widget
 def post_widget(request):
     all_posts = Post.objects.filter(status='published').order_by('published_date')
     years = []
@@ -25,6 +26,7 @@ def post_widget(request):
     'categories':categories
     }
 
+#site settings
 def site_settings(request):
     settings = BlogSettings.objects.get(id=1)
 
@@ -47,9 +49,9 @@ def site_settings(request):
     }
 
 
-#@login_required
+#Return profile picture of current user
 def user_profile_info(request):
-    profile_pic = "" 
+    profile_pic = ""
     if request.method == 'GET':
         if(request.user.is_authenticated):
             current_user = request.user

@@ -4,7 +4,7 @@ from blog.models import Post,Tag,Category
 from accounts.models import UserProfileInfo
 from comments.models import Comment,Reply
 from .models import BlogSettings
-from blog.forms import UserForm,UserProfileInfoForm, PostForm
+from blog.forms import UserForm,UserProfileInfoForm
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse

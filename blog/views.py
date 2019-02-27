@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from blog.models import Post,Tag,Category
 from accounts.models import UserProfileInfo
 from comments.models import Comment,Reply
-from blog.forms import UserForm,UserProfileInfoForm, PostForm
+from blog.forms import UserForm,UserProfileInfoForm
 from . import forms
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
@@ -235,18 +235,3 @@ def registration(request):
                     {'user_form':user_form,
                     'profile_form':profile_form,
                     'registered':registered})
-
-#New Post creation in custom backend.this function is not workable right now.It will updated in next version
-@login_required
-def post_form_view(request):
-    form = forms.PostForm()
-
-    if request.method == 'POST':
-        form = forms.PostForm(request.POST)
-
-        if form.is_valid():
-            print("Form Validation Successful!")
-            print("Title:"+ form.cleaned_data['title'])
-            print("Content"+ form.cleaned_data['content'])
-
-    return render(request, 'blog/new_post.html',{'form':form})

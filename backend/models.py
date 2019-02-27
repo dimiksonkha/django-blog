@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+# Blog settings
 class BlogSettings(models.Model):
     site_icon = models.ImageField(upload_to='icons')
     site_logo = models.ImageField(upload_to='logos')

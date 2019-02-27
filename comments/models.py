@@ -2,9 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from blog.models import Post
-from accounts.models import UserProfileInfo 
+from accounts.models import UserProfileInfo
 
 # Create your models here.
+
+# Comment of a post 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE, default=1, related_name='comments')
     content = models.CharField(max_length=1000, blank=True)
@@ -28,7 +30,7 @@ class Comment(models.Model):
         return self.content
 
 
-
+# Reply of a Comment
 class Reply(models.Model):
     comment = models.ForeignKey(Comment,on_delete=models.CASCADE, default=10, related_name='replies')
     content = models.CharField(max_length=1000, blank=True)
