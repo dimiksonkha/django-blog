@@ -197,7 +197,7 @@ def user_login(request):
         else:
             print('Someone tried to login and failed!')
             print('User Name {} and Password {}'.format(username, password))
-            return HttpResponse("Invalid login detials provieded")
+            return HttpResponse("Invalid login detials provided!!!")
     else:
         return render(request,'blog/login.html', {})
 
