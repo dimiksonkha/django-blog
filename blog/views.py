@@ -3,8 +3,6 @@ from django.http import HttpResponse
 from blog.models import Post,Tag,Category
 from accounts.models import UserProfileInfo
 from comments.models import Comment,Reply
-from blog.forms import UserForm,UserProfileInfoForm
-from . import forms
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -165,73 +163,3 @@ def submit_reply(request):
         r.save()
 
     return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, ))) # have to work here
-
-
-
-
-#Log out from blog
-@login_required
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('index'))
-
-#Authentication and Login
-def user_login(request):
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(username=username, password=password)
-
-        if user:
-            if user.is_active and ( user.is_superuser or user.is_staff):
-                login(request, user)
-                return HttpResponseRedirect(reverse('backend:posts'))
-            elif user.is_active:
-                login(request, user)
-                return HttpResponseRedirect(reverse('index'))
-            else:
-                return HttpResponse("User is not active.Please Contact  to Admin")
-
-        else:
-            print('Someone tried to login and failed!')
-            print('User Name {} and Password {}'.format(username, password))
-            return HttpResponse("Invalid login detials provided!!!")
-    else:
-        return render(request,'blog/login.html', {})
-
-
-#New user registration
-def registration(request):
-    registered = False
-
-    if request.method == 'POST' :
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileInfoForm(data=request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-
-            profile = profile_form.save(commit = False)
-            profile.user = user
-
-            if 'profile_pic' in request.FILES :
-                profile.profile_pic = request.FILES['profile_pic']
-
-            profile.save()
-
-            registered = True
-
-        else:
-            print(user_form.errors, profile_form.errors)
-    else:
-        user_form = UserForm()
-        profile_form = UserProfileInfoForm()
-
-    return render(request,'blog/sign-up.html',
-                    {'user_form':user_form,
-                    'profile_form':profile_form,
-                    'registered':registered})

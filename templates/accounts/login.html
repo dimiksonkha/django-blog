@@ -22,7 +22,7 @@
         <div class="row">
         <div class="col-md-4 centered">
 
-            <form action="{% url 'blog:user_login' %}", method="POST">
+            <form action="{% url 'accounts:user_login' %}", method="POST">
 								{% csrf_token %}
               <div class="form-group">
                 <label for="username">User Name</label>
@@ -39,7 +39,7 @@
               <button type="submit" class="btn btn-primary">Login</button>
 							<br>
 							New here?
-							<a class="btn btn-outline-success" href="{% url 'blog:sign-up'%}" style="margin-left: 10px">Create an account</a>
+							<a class="btn btn-outline-success" href="{% url 'accounts:sign-up'%}" style="margin-left: 10px">Create an account</a>
             </form>
 
         </div>

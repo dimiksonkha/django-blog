@@ -19,11 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from blog import views
 from backend import views
+from accounts import views
 
 
 urlpatterns = [
     path('', views.index, name="index"),
     path('blog/', include('blog.urls')),
     path('backend/', include('backend.urls')),
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
