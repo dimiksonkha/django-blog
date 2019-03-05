@@ -26,9 +26,19 @@ MEDIA_DIR = os.path.join(BASE_DIR, "media")
 SECRET_KEY = '19jw%v0_745h+0w$0nh1#n$s5d*5a4#7h733%!1rw2@t1s3byb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# whene Turning off debug, that's mean ( DEBUG = False ) will show us what a live site would show , just for check it's work.
+
+DEBUG = False
+
+# and ALLOWED_HOSTS restricts which HTTP requests Django will respond to so the URL needs to be explicitly added.
+
+if DEBUG is False:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+if DEBUG is True:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -148,4 +158,6 @@ STATICFILES_DIRS = [
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL ='/media/'
+
+#login url
 LOGIN_URL = '/blog/user_login'

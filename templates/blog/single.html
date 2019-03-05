@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+comments<!DOCTYPE html>
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
 {% block post_block %}
@@ -61,7 +61,7 @@
             <div class="card-body">
 
             {% if user.is_authenticated %}
-            <form action="{% url 'blog:submit_comment'%}" method="POST">
+            <form action="{% url 'comments:submit_comment'%}" method="POST">
               {% csrf_token %}
 
                 <div class="form-group">
@@ -118,7 +118,7 @@
                         <p>{{ reply.content}} </p>
                         {% if forloop.last %}
                         {% if user.is_authenticated %}
-                        <form action="{% url 'blog:submit_reply'%}" method="POST">
+                        <form action="{% url 'comments:submit_reply'%}" method="POST">
                           {% csrf_token %}
 
                             <div class="form-group">
@@ -155,7 +155,7 @@
               {% else %}
                 <button type="button" class="btn reply">Reply</button>
                 {% if user.is_authenticated %}
-                <form class="reply-form" action="{% url 'blog:submit_reply'%}" method="POST">
+                <form class="reply-form" action="{% url 'comments:submit_reply'%}" method="POST">
                   {% csrf_token %}
 
                     <div class="form-group">
@@ -191,7 +191,7 @@
           </div>
 
           {% endfor %}
-      
+
         {% endif %}
 
 
