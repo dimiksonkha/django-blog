@@ -64,9 +64,9 @@ def post_details(request, pk):
     return render(request, 'blog/single.html', context=my_dict)
 
 
-def custom_500(request):
-    return render(request, '500.html', status=500)
-
+# def custom_500(request):
+#     return render(request, '500.html', status=500)
+#
 
 # def custom_400(request):
 #     return render(request, '400.html', status=400)
@@ -146,8 +146,3 @@ def search_view(request):
         posts = paginator.get_page(page)
 
         context = {'posts':posts}
-<<<<<<< HEAD
-        return render(request, 'blog/archeive.html', context)
-=======
-        return render(request, 'blog/archeive.html', context)
->>>>>>> d2d7a5c0e386193418bfd26e0c3ab7d3b9217cb8

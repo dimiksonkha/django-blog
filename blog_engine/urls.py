@@ -22,15 +22,15 @@ from django.conf.urls.static import static
 from blog import views
 from backend import views
 from accounts import views
-<<<<<<< HEAD
-=======
 
-from django.conf.urls import (
-    handler500,
-    handler400,
-    handler403
-)
->>>>>>> d2d7a5c0e386193418bfd26e0c3ab7d3b9217cb8
+
+
+# from django.conf.urls import (
+#     handler500,
+#     handler400,
+#     handler403
+# )
+
 
 
 urlpatterns = [
@@ -43,6 +43,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-handler500 = 'blog.views.custom_500'
+# handler500 = 'blog.views.custom_500'
 # handler400 = 'blog.views.custom_400'
 # handler403 = 'blog.views.custom_403'

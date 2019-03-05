@@ -158,4 +158,6 @@ STATICFILES_DIRS = [
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL ='/media/'
+
+#login url
 LOGIN_URL = '/blog/user_login'
