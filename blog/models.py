@@ -20,7 +20,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.text
 
-# Blog Post 
+# Blog Post
 class Post(models.Model):
     title = models.CharField(max_length=250,unique=True)
     content = models.CharField(max_length=1000)

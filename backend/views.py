@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from blog.models import Post,Tag,Category
 from accounts.models import UserProfileInfo
@@ -125,13 +125,20 @@ def create_post(request):
 #Post edit page
 @login_required
 def edit_post(request, pk):
-    post = Post.objects.get(id=pk)
+    post = get_object_or_404(Post, id=pk)
     post_tags = post.tag.all()
     other_tags = Tag.objects.all().exclude(tags__pk=pk)
     post_categories = post.category.all()
     other_categories = Category.objects.all().exclude(categories__pk=pk)
 
-    my_dict = {'post':post, 'edit_post':'edit_post', 'post_tags':post_tags, 'post_categories':post_categories,'other_tags':other_tags,'other_categories':other_categories}
+    my_dict = {
+        'post':post,
+        'edit_post':'edit_post',
+        'post_tags':post_tags,
+        'post_categories':post_categories,
+        'other_tags':other_tags,
+        'other_categories':other_categories
+    }
 
     return render(request, 'backend/posts.html', context=my_dict)
 
@@ -184,7 +191,7 @@ def update_post(request):
 # process delete post
 @login_required
 def delete_post(request, pk):
-    post = Post.objects.get(id=pk)
+    post = get_object_or_404(Post, id=pk)
     post.delete()
 
     if(request.user.is_staff):

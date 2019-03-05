@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import (
+    render,
+    redirect,
+    get_object_or_404
+)
 from django.http import HttpResponse
 from blog.models import Post,Tag,Category
 from accounts.models import UserProfileInfo
@@ -27,7 +31,7 @@ def index(request):
 
 #Post details page
 def post_details(request, pk):
-    post = Post.objects.get(id=pk)
+    post = get_object_or_404(Post, id=pk)
     post_tags = post.tag.all()
     post_categories = post.category.all()
 
@@ -48,12 +52,34 @@ def post_details(request, pk):
 
 
 
-    my_dict = {'post_tags':post_tags,'post_categories':post_categories, 'post':post, 'comments':comments, 'next_post':next_post, 'previous_post':previous_post}
+    my_dict = {
+        'post_tags': post_tags,
+        'post_categories': post_categories,
+        'post': post,
+        'comments': comments,
+        'next_post': next_post,
+        'previous_post': previous_post
+    }
+
     return render(request, 'blog/single.html', context=my_dict)
+
+
+def custom_500(request):
+    return render(request, '500.html', status=500)
+
+
+# def custom_400(request):
+#     return render(request, '400.html', status=400)
+
+
+# def custom_403(request):
+#     return render(request, '403.html', status=403)
+
 
 #All posts by published year
 def archeive_posts(request, year):
     post_list = Post.objects.filter(published_date__year = year)
+
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -63,7 +89,7 @@ def archeive_posts(request, year):
 
 #All posts by post tag
 def archeive_posts_by_tag(request, tag):
-    tag = Tag.objects.get(text=tag)
+    tag = get_object_or_404(Tag, text=tag)
     post_list = tag.tags.all()
 
     paginator = Paginator(post_list, 5) # Show 5 posts per page
@@ -75,7 +101,7 @@ def archeive_posts_by_tag(request, tag):
 
 #All posts by post category
 def archeive_posts_by_category(request, category):
-    category = Category.objects.get(text=category)
+    category = get_object_or_404(Category, text=category)
     post_list = category.categories.all()
     paginator = Paginator(post_list, 5) # Show 5 posts per page
     page = request.GET.get('page')
@@ -86,7 +112,7 @@ def archeive_posts_by_category(request, category):
 
 #All posts by a specific author
 def archeive_posts_by_author(request, username):
-    author = User.objects.get(username=username)
+    author = get_object_or_404(User, username=username)
     post_list = Post.objects.filter(author=author.id)
 
     paginator = Paginator(post_list, 5) # Show 5 posts per page
@@ -120,4 +146,8 @@ def search_view(request):
         posts = paginator.get_page(page)
 
         context = {'posts':posts}
+<<<<<<< HEAD
         return render(request, 'blog/archeive.html', context)
+=======
+        return render(request, 'blog/archeive.html', context)
+>>>>>>> d2d7a5c0e386193418bfd26e0c3ab7d3b9217cb8
