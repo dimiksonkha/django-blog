@@ -64,16 +64,16 @@ def post_details(request, pk):
     return render(request, 'blog/single.html', context=my_dict)
 
 
-# def custom_500(request):
-#     return render(request, '500.html', status=500)
-#
-
-# def custom_400(request):
-#     return render(request, '400.html', status=400)
+def custom_500(request):
+    return render(request, '500.html', status=500)
 
 
-# def custom_403(request):
-#     return render(request, '403.html', status=403)
+def custom_400(request):
+    return render(request, '400.html', status=400)
+
+
+def custom_403(request):
+    return render(request, '403.html', status=403)
 
 
 #All posts by published year
@@ -146,52 +146,5 @@ def search_view(request):
         posts = paginator.get_page(page)
 
         context = {'posts':posts}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
         return render(request, 'blog/archeive.html', context)
-
-#Comment submission by logged in user
-@login_required
-def submit_comment(request):
-
-    if request.method == 'POST' :
-
-        comment_title = request.POST.get('comment_title')
-        comment_content = request.POST.get('comment_content')
-        post_id = request.POST.get('post_id')
-        current_user = request.user
-        profile = UserProfileInfo.objects.get(user=current_user)
-
-        c = Comment()
-        c.post = Post.objects.get(id=post_id)
-        c.content = comment_content
-        c.author = UserProfileInfo.objects.get(id=profile.id)
-        c.published_date = datetime.now()
-        c.save()
-
-    return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, )))
-
-#Reply submission by logged in user
-@login_required
-def submit_reply(request):
-
-    if request.method == 'POST' :
-        post_id = request.POST.get('post_id')
-        reply_title = request.POST.get('reply_title')
-        reply_content = request.POST.get('reply_content')
-        comment_id = request.POST.get('comment_id')
-        current_user = request.user
-        profile = UserProfileInfo.objects.get(user=current_user)
-
-        r = Reply()
-        r.comment = Comment.objects.get(id=comment_id)
-        r.content = reply_content
-        r.author = UserProfileInfo.objects.get(id=profile.id)
-        r.published_date = datetime.now()
-        r.save()
-
-    return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, ))) # have to work here
->>>>>>> parent of e5b6c1a... froms views templets codes are transfered from blog to comments app
-=======
->>>>>>> 60cc5588172f1ef19412c07d560b3ab3cee547af

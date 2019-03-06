@@ -25,11 +25,11 @@ from accounts import views
 
 
 
-# from django.conf.urls import (
-#     handler500,
-#     handler400,
-#     handler403
-# )
+from django.conf.urls import (
+    handler500,
+    handler400,
+    handler403
+)
 
 
 
@@ -42,6 +42,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-# handler500 = 'blog.views.custom_500'
-# handler400 = 'blog.views.custom_400'
-# handler403 = 'blog.views.custom_403'
+handler500 = 'blog.views.custom_500'
+handler400 = 'blog.views.custom_400'
+handler403 = 'blog.views.custom_403'
