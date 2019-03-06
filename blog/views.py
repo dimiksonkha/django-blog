@@ -147,6 +147,7 @@ def search_view(request):
 
         context = {'posts':posts}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         return render(request, 'blog/archeive.html', context)
 
@@ -192,3 +193,5 @@ def submit_reply(request):
 
     return HttpResponseRedirect(reverse('blog:post_details', args=(post_id, ))) # have to work here
 >>>>>>> parent of e5b6c1a... froms views templets codes are transfered from blog to comments app
+=======
+>>>>>>> 60cc5588172f1ef19412c07d560b3ab3cee547af
